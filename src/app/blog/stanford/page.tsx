@@ -58,8 +58,8 @@ export default async function BlogHome() {
             <HorizontalBar height={'1px'} width={'120px'} color={'#C41E3A'} />
             <p className={styles.bodyText}>
               I love learning but don{"'"}t like forgetting what I{"'"}ve
-              learned. Here I do my best to document the coolest stuff from each
-              course I{"'"}ve taken.
+              learned. Here I do my best to document interesting and useful
+              stuff from courses I{"'"}ve taken and other sources.
             </p>
           </section>
           <section className={styles.blogContent}>

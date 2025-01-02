@@ -139,3 +139,7 @@ hr {
     text-align: center;
   }
 }
+
+:visited {
+  color: #2870bd;
+}

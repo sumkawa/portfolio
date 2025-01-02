@@ -1,0 +1,373 @@
+---
+title: 'Math 51: Methods in Several Variables'
+date: '2024-12-22'
+description: 'Introductory multivariable calculus, linear algebra, and matrix methods.'
+---
+
+# Intro
+
+Stanford is a bit strange in their coverage of linear algebra and multivariable calculus. Math 51 covers what you would find in your typical introductory multivariable calculus class, but only the derivative/gradient side of things, as well as a brief introduction to the usefulness of matrix decompositions and eigenvalues. The course is largely based on memorization of methods and performing computational routine. I didn't find the course that enlightening and honestly wished it followed a traditional routine, like that of Gill Strang's 18.06.
+
+# Overall Stats
+
+Grade breakdown:
+
+- 20%: Midterm 1
+- 20%: Midterm 2
+- 30%: Final exam
+- 10%: PCRQs (Pre-class Reading Questionairres)
+- 20%: Problem
+
+Here the PCRQs and Problem set marks are divided by 0.8: e.g if I get a total of 75% on the HW section I'll actually end up with a $\frac{0.75}{0.8} =0.9375$.
+
+Stats for Fall Quarter 2024:
+
+- Midterm 1: Median 45.5/60, SD 11, Mean 44/60
+- Midterm 2: Median 50.5/60, SD 8.41, Mean 48.5/60
+- Midterm 3: Median 67/90, SD 15, Mean 64/90
+
+The curve in my quarter was only about 2.5-3%, since fall quarter tends to be quite brutal. Most kids taking Math 51 in fall already took linear algebra and multivariable calculus in high school, so exam scores tend to be higher on average. I've heard that the curve in other quarters is more like 8-10%, enough to move up a full letter grade, and I'll add those stats from friends that are taking Math 51 in these upcoming quarters when they're available.
+
+# Meta-Level Stuff
+
+The biggest thing is that I learned is that I should have shopped around when it came to TAs and section. On the very last discussion section day before the final exam I dropped in on a dude named Pino's discussion section, which my friend recommended, and it was brilliant and amazingly well taught. This is in contrast to my own section leader, who sort held a quiet session for an hour where we'd just do homework (which is a bit of a waste of time, in my opinion).
+
+I made it out of Math 51 with a decent grade after skipping pretty much every single lecture and section. But my study schedule for math was pretty bad and I tended to leave things to the last minute, which was cognitively draining and required a lot of work.
+
+In an attempt to iterate and learn from mistakes, I'm going to try this study regime:
+
+1. Two days before lecture, read textbook in depth
+2. Actually go to lecture, and do a couple simple example problems the same day as lecture
+3. Do associated pset problems 2 days later
+
+This way I naturally bake in a spaced repetition of about 2 days or so, 3 times, so hopefully the material sticks better. I'll see if this works better for me in Math 52.
+
+# Approximation
+
+Let's define the derivative matrix of a function $\textbf{f}: \mathbb{R}^n \rightarrow \mathbb{R}^M$ at a point $\textbf{a}$, which we'll denote with $(D\textbf{f})(\textbf{a})$, to be the $m \times n$ matrix:
+
+$$
+(D\textbf{f})(\textbf{a}) =  \begin{bmatrix} \frac{\partial f_1}{\partial x_1}(\mathbf{a}) & \frac{\partial f_1}{\partial x_2}(\mathbf{a}) & \cdots & \frac{\partial f_1}{\partial x_n}(\mathbf{a}) \\ \frac{\partial f_2}{\partial x_1}(\mathbf{a}) & \frac{\partial f_2}{\partial x_2}(\mathbf{a}) & \cdots & \frac{\partial f_2}{\partial x_n}(\mathbf{a}) \\ \vdots & \vdots & \ddots & \vdots \\ \frac{\partial f_m}{\partial x_1}(\mathbf{a}) & \frac{\partial f_m}{\partial x_2}(\mathbf{a}) & \cdots & \frac{\partial f_m}{\partial x_n}(\mathbf{a}) \end{bmatrix}
+$$
+
+Using this, we can define the linear approximation for a point near $\textbf{a}$ to be:
+
+$$
+\textbf{f}(\textbf{a} + \textbf{h}) = \textbf{f(a)} + ((D\textbf{f})(\textbf{a}))\textbf{h}
+$$
+
+The mathematical intuition here is that $\textbf{h}$ is an $n-\text{vector}$ that gives our multivariable "steps", so multiplying the derivative matrix with $\textbf{h}$ we get the change in the surface of the function given by the associated derivative.
+
+In multiple variables we define differentiability of $\textbf{f}: \mathbb{R}^n \rightarrow \mathbb{R}^m$ at $\textbf{a} \in \mathbb{R}^n$ to be the existence of an $m \times n$ matrix $L_n$ so that as $\textbf{h}$ approaches $\textbf{0}$ we have:
+
+$$
+\frac{||\textbf{f(a+h)} - (\textbf{f(a)} +L_h\textbf{h})||}{||\textbf{h}||} \rightarrow 0
+$$
+
+Here, if the partial derivatives exist, then so does the derivative matrix, and for a differentiable function $L_{h}$ is just $(D\textbf{f})(\textbf{a})$.
+
+Again, the intuition for this is similar to single variable definitions of differentiability - there is, if you zoom in on the function's surface enough, the function will exhibit some quality of "smoothness" that allows it to be differentiable.
+
+I think that while these seem like very basic initial applications, I've chosen to include it because it ties together how everything in single variable calculus can easily extended into multiple variables just using the language of matrices and vectors. Take the definition of differentiability: if one sets $m, n = 1$, then it can be seen that the definition just becomes the single variable definition of differentiability.
+
+# Matrices as Transformation
+
+A nice mathematical intuition for what matrices do is encode some linear transformation for a vector. This also means that matrices encode functions, since they take inputs and give some output for a given vector. Take some matrix $M$:
+
+$$
+M = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+$$
+
+When we multiply $M$ by $\hat{i}$ and $\hat{j}$ we get:
+
+$$
+M\hat{i} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \text{ and } M\hat{j} = \begin{bmatrix} 1 \\ 0 \end{bmatrix}
+$$
+
+This matrix is literally transforming $\hat{i}$ and $\hat{j}$ to swap in a sense, resulting in a reflection across the line $y = x$.
+
+In general, for an $n \times n$ square matrix $M$, one can think of each column of the matrix as encoding where each respective basis vector $\textbf{e}_1, \textbf{e}_2, ..., \textbf{e}_n$ ends up after applying the transformation encoded by $M$.
+
+We see this in more clarity when we consider how matrix multiplication works for some generic vector $\textbf{v} = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} \in \mathbb{R}^3$:
+
+$$
+A\textbf{v} = \begin{bmatrix} y_{11} & y_{12} & y_{13} \\ y_{21} & y_{22} & y_{23} \\ y_{31} & y_{32} & y_{33} \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}
+$$
+
+$$
+=\begin{bmatrix} x_1y_{11} + x_2y_{12} + x_3y_{13} \\ x_1y_{21} + x_2y_{22} + x_3y_{23} \\ x_1y_{31} + x_2y_{32} + x_3y_{33} \end{bmatrix}
+$$
+
+$$
+= x_1\begin{bmatrix} y_{11} \\ x_{21} \\ x_{31} \end{bmatrix} + x_2\begin{bmatrix} y_{12} \\ x_{22} \\ x_{32} \end{bmatrix} + x_3\begin{bmatrix} y_{13} \\ x_{23} \\ x_{33} \end{bmatrix}
+$$
+
+The matrix $M$ is literally encoding a linear combination of its columns, with scalar coefficients given by the elements of $\textbf{v}$. This can be extended to $\mathbb{R}^n$. Consider what happens when we have basis vectors:
+
+$$
+\textbf{e}_{1}= \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix},
+\textbf{e}_{2}=\begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix},
+\textbf{e}_{3}=\begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+$$
+
+Setting $\textbf{v}$ to any of the above $\textbf{e}_{j}$ causes every column vector in the linear combination to disappear except for the associated $j_{th}$ column vector - if we plug in the $j_{th}$ basis vector we obtain the $j_{th}$ column vector of $M$, so $M$ is encoding where that $j_{th}$ basis vector ends up after applying the function represented by $M$.
+
+We can also multiply matrices with each other to encode "compound" transformations, analogous to function compositions.
+
+To illustrate compound matrix transformations, consider two rotation matrices:
+
+1. **90° Clockwise Rotation Matrix**:
+
+$$
+R_{\text{CW}} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}
+$$
+
+2. **90° Counterclockwise Rotation Matrix**:
+
+$$
+R_{\text{CCW}} = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+$$
+
+When we multiply these matrices, we get:
+
+$$
+R_{\text{CW}} \cdot R_{\text{CCW}} = \begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix} \cdot \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
+$$
+
+Performing the multiplication:
+
+$$
+R_{\text{CW}} \cdot R_{\text{CCW}} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+$$
+
+Thus, the product of a 90° clockwise rotation and a 90° counterclockwise rotation results in the identity matrix, which makes sense (rotating a vector clockwise and then counterclockwise by 90 degrees should do nothing to that vector)
+
+$$
+R_{\text{CW}} \cdot R_{\text{CCW}} = I
+$$
+
+This shows that the two transformations cancel out, resulting in the identity matrix.
+
+# Friendship Networks
+
+We can consider a matrix that encodes friends, call it $F$ - specifically, we say that the $ij_{th}$ entry is $1$ if $i$ and $j$ are friends, and 0 otherwise. We make two assumptions:
+
+1. Friendship is reciprocal, so $F$ must be symmetric
+2. You cannot be friends with yourself, so the diagonal of $F$ is all zero
+
+Turns out that the $ij_{th}$ entry of $FF = F^2$ is the number of common friends between $i$ and $j$. Why? We can give a formula for the $ij_{th}$ entry of $F^2$:
+
+$$
+ij_{th} \text{ entry of } F^2 =\sum_{k = 1}^n n_{ik} n_{kj}
+$$
+
+Notice that $n_{ik}n_{kj}$ only equals $1$ if both $n_{ik}$ and $n_{kj}$ are 1, or in other words person $k$ is a friend of both person $i$ and $j$. So the total summation gives the number of people who are friends with $i$ and friends with $j$!
+
+I thought this result was interesting, if not really all that practical. I doubt that in real life any serious social media company is storing information about the graph of their users in a matrix, since 99.999% of that matrix would be empty, and the matrix would have several billion rows and columns. Instead similar functionality can be obtained just with intersect operations and SQL lookups.
+
+# Span and linear dependence
+
+Span is a simple concept but it's so important to intuition in linear algebra that I include it here to help ensure I never forget it. We define the span of some collection of vectors $\textbf{v}_1, \textbf{v}_2, ... \textbf{v}_n \in \mathbb{R}^n$ to be the collection of all vectors in $\mathbb{R}^n$ that we can make through some linear combination of the collection of vectors. In formal logic, the span is something like:
+
+$$
+\textbf{x} \in \text{span}(\textbf{v}_{1},...,\textbf{v}_{n})
+$$
+
+$$
+\iff
+$$
+
+$$
+\exists c_{1},..., c_{n} \in \mathbb{R}. \textbf{x} = c_{1}\textbf{v}_{1} + ... + c_n\textbf{v}_n
+$$
+
+So intuitively, the vectors
+
+$$
+\textbf{v} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \text{ and } \textbf{w} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix}
+$$
+
+span the $xy$ plane in $\mathbb{R}^3$, since we can make any vector in the $xy$ plane by linearly combining $\textbf{v}$ and $\textbf{w}$. Similarly, the vectors
+
+$$
+\textbf{v} = \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} \text{ and } \textbf{w} = \begin{bmatrix} 0 \\ 1 \\ 0 \end{bmatrix} \text{ and } \textbf{u} = \begin{bmatrix} 0 \\ 0 \\ 1 \end{bmatrix}
+$$
+
+span all of $\mathbb{R}^3$, since we can linearly combine $\textbf{v}$, $\textbf{w}$, and $\textbf{u}$ to make any vector in all of $\mathbb{R}^3$.
+
+# Matrix Spaces
+
+Again, simple concepts, but so important to intuitively reasoning about matrices I include them here.
+
+## Column Space:
+
+We define column space to be the span of the column vectors of some matrix $M$.
+So if we define $M$ as:
+
+$$
+M = \begin{bmatrix} y_{11} & y_{12} & y_{13} \\ y_{21} & y_{22} & y_{23} \\ y_{31} & y_{32} & y_{33} \end{bmatrix}
+$$
+
+then the column space, which we denote with $C(M)$, is just the span of the vectors:
+
+$$
+\begin{bmatrix} y_{11} \\ x_{21} \\ x_{31} \end{bmatrix}, \begin{bmatrix} y_{12} \\ x_{22} \\ x_{32} \end{bmatrix}, \begin{bmatrix} y_{13} \\ x_{23} \\ x_{33} \end{bmatrix}
+$$
+
+For any square matrix $M$, since we know that $M$ really just encodes some linear combination of its columns from earlier, the system $M\textbf{x} = \textbf{b}$ has a solution **only when $\textbf{b}$ lies in the column space of $M$**. If $\textbf{b}$ isn't in the column space of $M$, then there's no way to linearly combine the columns of $M$ to create $\textbf{b}$. This is the intuitive reason for why some linear systems may lack a solution.
+
+## Null Space:
+
+Null spaces are useful since if the null space of some square matrix contains any other vector than just $\textbf{0}$ (the zero vector), then it turns out that if $A\textbf{x} = \textbf{b}$ has a solution then there are infinite solutions.
+
+We denote the null space of some matrix $A$ as $N(A)$, and we define it to be the set of all solutions in $\mathbb{R}^n$ to the system $A\textbf{x} = \textbf{0}$.
+
+Say we find some solution $\textbf{x}$ to the system $A\textbf{x} = \textbf{b}$, where $\textbf{b} \not = \textbf{0}$, and we know that the system $A\textbf{x} = \textbf{0}$ has some solution $\textbf{v} \not = \textbf{0}$. Then we know that $A\textbf{x} = \textbf{b}$ actually has infinite solutions, since $A(\textbf{x} + \textbf{v}) = A\textbf{x} + A\textbf{v} = A\textbf{x} + \textbf{0}$. So we see that, by the properties of a linear subspace, the nullspace contains infinite vectors (in this case, any scalar multiple of $v$), so to obtain a solution we simply take $x$ and add any vector in the nullspace of $A$.
+
+# Over and Underdetermined Systems
+
+Consider some system $A\textbf{x} = \textbf{b}$. We call the system overdetermined if there are more associated equations than unknowns (So if $A$ is an $m \times n$ matrix, $m > n$). Intuitively it is often (but not always) the case that there are no solutions, since there are fewer columns than there are rows, so the column space doesn't cover all of $\mathbb{R}^n$.
+
+On the other hand we say a system is underdetermined if there are more unknowns than equations (so $m < n$). Intuitively these systems often (but not always) have infinite solutions, since the nullspace is nonzero and contains some nonzero vector (since there are more columns than rows, so some column must be "redundant" and not linearly independent of the others).
+
+These are a nice "dipstick" test for some given linear system, even if they aren't definitive truths.
+
+### Orthogonal Matrices
+
+An orthogonal matrix $A$ is defined as a square matrix where the columns form an orthonormal basis. For orthogonal matrices, $A^{T}= A^{-1}$.
+
+# QR and LU Decompositions
+
+I skip over the details of QR and LU decompositions and finding them since it's pretty tedious, mechanical, and easy to pick up.
+
+To be brief, "most" (but not all) $n \times n$ matrices $A$ have form $A = LU$ for $n \times n$ lower triangular $L$ and $n \times n$ upper triangular $U$. This is helpful since systems that can be decomposed into this form can be easily solved.
+
+$$
+A\textbf{x} = \textbf{b}
+$$
+
+$$
+LU\textbf{x} = \textbf{b}
+$$
+
+Then all we have to do is solve 1) $L\textbf{y} = \textbf{b}$ and then solve 2) $U \textbf{x} = \textbf{y}$.
+
+Invertible matrices can also be decomposed in the form $A = QR$, where $Q$ is an $n \times n$ orthogonal matrix and $R$ is an $n \times n$ upper triangular matrix. Since $Q$ is an orthogonal matrix, $Q^{-1}$ is just $Q^T$, so we solve $A \textbf{x} = \textbf{b}$ by simply noting that $A^{-1} = R^{-1}Q^T$ ($R^{-1}$ is easy to find mechanically because it is upper triangular).
+
+What's a lot more interesting than finding these decompositions is what we can do with them, or more generally what solving linear algebraic systems lets us do. The most interesting to me was using these decompositions to find approximate solutions to model some function or phenomena.
+
+This applies to me with regards to electrical engineering, where I might need to find a small number of constants in a model that fits a lot of data. Another way to say this is that I may need to approximate an unknown function by a linear combination of a small number of known functions, and we want to find the coefficients of that linear combination. This also, as one might imagine, comes up all the time in data science, physics, or any discipline where decent mathematical models for something are necessary.
+
+To give a better intuition for what we're actually doing, we can pretend we're conducting some signal processing experiment where we're measuring some unknown signal, $f : [0, T] \rightarrow \mathbb{R}$, on the entire time interval of length $T$. If we have some known basic signals, like simple sine, cosine, saw, etc. $f_1, ... , f_s : [0, T] \rightarrow \mathbb{R}$, then we want the linear combinations that will allow us to take these known functions (which are only measured over some part of the interval $[0, T]$) and approximate just the one function $f$ over the entire interval $[0, T]$.
+
+Mathematically, we might want to approximate some unknown function $f: R \rightarrow \mathbb{R}$ on some region R (which could be a surface in space or a time interval). The approximation will be a linear combination of some known functions $f_1, ..., f_n: R \rightarrow \mathbb{R}$, and be of form $c_1f_1 + ... + c_nf_n$. All this data comes from "experiments", where we might measure the values of a function $f$ at some specific point or time $r_1, ..., r_m \in R$.
+
+Let A be the $m\times n$ matrix of values of the $f_j\text{'s}$ at many points $r_1, ..., r_m \in R$. Let $\textbf{b}$ be the vector whose $i_{th}$ entry $b_i$ is the measured value of $f$ at the point $r_i$ in the experiment. So the "best approximate solution" to the system $A\textbf{x} = \textbf{b}$ will give us the values $c_1, ..., c_n$ we need for our function approximation.
+
+For this system all we need to do is decompose it into a $QR$ decomposition, so we see that $\textbf{x} = (A^TA)^{-1} A^T\textbf{b}$. If a solution exists for this system, then $\textbf{x}$ is our solution, and its entries will give the scalar coefficients we need.
+
+# Spectral Theorem and Applications
+
+The spectral theorem is as follows:
+
+**Theorem:** Let $A$ be a symmetric $n \times n$ matrix. There is an orthogonal basis $\textbf{w}_1, ..., \textbf{w}_n$ consisting of eigenvectors for $A$. There's a few applications of this that I thought were kinda neat.
+
+## Finding Quadratic Forms
+
+For any symmetric matrix $A$, we can now find its quadratic form in terms of eigenvalues. We call this the diagonalization formula, given by
+
+$$
+q_A(\textbf{v}) = \sum_{i=1}^n\lambda_i( \textbf{w}_i\cdot \textbf{w}_i)t_i^2
+$$
+
+This will give a quadratic form where there are no cross-terms (i.e no terms with $xy$, or $yz$), which becomes extremely useful since this allows us to determine the geometry of the function encoded by $A$.
+
+## Definite-ness of Matrices
+
+Let $Q$ be the quadratic form of a matrix $A$. We say the matrix $A$ represents a positive-definite, negative-definite, or indefinite quadratic form if:
+
+- **Positive-definite**: $q(\mathbf{x}) > 0$ for all nonzero $\mathbf{x}$.
+- **Negative-definite**: $q(\mathbf{x}) < 0$ for all nonzero $\mathbf{x}$.
+- **Indefinite**: $q(\mathbf{x})$ takes both positive and negative values depending on $\mathbf{x}$.
+
+Quadratic forms often include **cross terms** like $xy$ or $yz$, which introduce ambiguity in interpreting the geometry of $Q(\mathbf{x})$. For example:
+
+$$
+q(x, y) = ax^2 + by^2 + cxy
+$$
+
+The term $cxy$ complicates the identification of the axes of symmetry, since it's not readily apparent whether or not $q$ will always be positive or negative, or only sometimes.
+
+By using diagonalization we can express the above quadratic form in terms of the eigenvalues of $A$:
+
+$$
+q(x, y) = q_A(\textbf{v}) = \sum_{i=1}^n\lambda_i( \textbf{w}_i\cdot \textbf{w}_i)t_i^2
+$$
+
+We see pretty easily that if all $\lambda_i$ are positive, then the quadratic form of $A\textbf{x}$ is always positive, so the function is always positive for any input vector $\textbf{x} \not = \textbf{0}$. Similarly, if all $\lambda_i$ are negative, then the quadratic form is always negative and the function encoded by $A$ is always negative. And we can't really tell if some eigenvalue is positive, and another is negative.
+
+## Spectral Theorem Applications to Exponentiation
+
+Let $A$ be a symmetric $n \times n$ matrix with orthogonal eigenvectors $\mathbf{w}_1, \mathbf{w}_2, \ldots, \mathbf{w}_n$, having corresponding eigenvalues $\lambda_1, \lambda_2, \ldots, \lambda_n$. Let $W$ be the $n \times n$ matrix whose columns are the respective unit eigenvectors
+
+$$
+\frac{\mathbf{w}_1}{\|\mathbf{w}_1\|}, \frac{\mathbf{w}_2}{\|\mathbf{w}_2\|}, \ldots, \frac{\mathbf{w}_n}{\|\mathbf{w}_n\|}
+$$
+
+Then $W^\top = W^{-1}$ (i.e., $W$ is an orthogonal matrix as discussed in Section 20.4), and $A = W D W^\top = W D W^{-1}$ for the diagonal matrix
+
+$$
+D = \begin{bmatrix} \lambda_1 & 0 & \cdots & 0 \\ 0 & \lambda_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & \lambda_n \end{bmatrix}
+$$
+
+whose entries are the corresponding eigenvalues.
+
+We can see how this is useful for matrix powers through the following:
+
+$$
+A^2 = WDW^TWDW^T = WD^2W^T = WD^2W^{-1}
+$$
+
+(Because $W$ is orthogonal, $W^{-1} = W^T$)
+
+$$
+A^3 = (WDW^{-1}) (WDW^{-1}) (WDW^{-1})
+$$
+
+$$
+= WD^3W^{-1}
+$$
+
+In general, $A^m = WD^mW^{-1}$, and since $D$ is diagonal it's easy to compute $D^m$. It's a fun little trick to work out end behaviours of things like Markov matrices by hand.
+
+# Hessians And Local Extrema
+
+Remember the Taylor Series from single variable calculus? Or maybe you don't want to remember. Whatever the case, it serves as a refinement of a simple linear approximation, "evolving" it into the quadratic approximation, and it works in multiple variables too! Given some $f: \mathbb{R}^n \rightarrow \mathbb{R}$, we can approximate $f$ near some point $\textbf{a} \in \mathbb{R}^n$ with:
+
+$$
+f(\textbf{a+h}) = f(\textbf{a}) + (f)(\textbf{a}) + \frac{1}{2}\textbf{h}^T((Hf)(\textbf{a}))\textbf{h}
+$$
+
+for small $\textbf{h}$. This is the "quadratic approximation" for $f$.
+
+When we think about extrema, they always occur at critical points where the gradient vanishes, leaving us with just:
+
+$$
+f(\textbf{a}) + \frac{1}{2}\textbf{h}^T((Hf)(\textbf{a}))\textbf{h}
+$$
+
+In this sense the quadratic form of the Hessian can be **extremely** useful, since it's basically giving away the geometry of the contour plot around $\textbf{a}$. The idea is that for $\textbf{h}$ near $\textbf{0}$, $f(\textbf{a} + \textbf{h}) = f(\textbf{a}) + \frac{1}{2}q_{(Hf)(\textbf{a})}(\textbf{h})$, so we're approximating the level curve of $f$ around $\textbf{a}$. If the quadratic form of the Hessian is positive or negative definite, then we know for sure that around $\textbf{a}$ all values of $f$ are either less than or greater than $\textbf{a}$, so $\textbf{a}$ is a local min or a max.
+
+Then we can use the diagonalization formula from earlier, since the Hessian matrix is guaranteed to be a symmetric matrix! So the quadratic form will be:
+
+$$
+q_H(t_1\textbf{w}_1  + ... + t_n\textbf{w}_n) =\lambda_1t_1^2 + ... + \lambda_nt_n^2
+$$
+
+For the $\textbf{w}_1, ... , \textbf{w}_n$ which are eigenvectors for their corresponding eigenvalues.
+
+We can take this at face value and just notice that if the Hessian $(Hf)(\textbf{a})$ is positive-definite then $\textbf{a}$ is a local min, if it's negative-definite then $\textbf{a}$ is a local max, and if it's indefinite then $\textbf{a}$ is a saddle point. Why? The quadratic form describes the geometry of the contour plot around $\textbf{a}$, so if the quadratic form is always positive around $\textbf{a}$ then the function must always be greater in any direction from $\textbf{a}$ (and therefore $\textbf{a}$ is a local min). Symmetric reasoning gets us to why $\textbf{a}$ must be a local max if the quadratic form is always negative (negative-definite).
+
+A minor extension is just that if the Hessian has all positive eigenvalues then $\textbf{a}$ is a local min, if all negative eigenvalues then $\textbf{a}$ is a local max, and if there are both positive and negative eigenvalues then $\textbf{a}$ is a saddle point.
+
+This is a little bit simpler to understand, but I still found it to be one of the most interesting results in the course (aside from stuff related to chemistry and SVMs, which I'll cover at some point). It ties together everything to motivate why the second derivative test works in multiple variables and makes you feel like each step is from a different part of your Math 51 journey - from quadratic forms to eigenvalues to level sets to gradients.

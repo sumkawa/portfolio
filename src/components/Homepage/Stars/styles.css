@@ -1,0 +1,41 @@
+.star1 {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+    0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: animate 3s linear;
+}
+.star1::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(90deg, #fff, transparent);
+}
+@keyframes animate {
+  0% {
+    transform: rotate(335deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(335deg) translateX(-1000px);
+    opacity: 0;
+  }
+}
+.star1:nth-child(1) {
+  top: 0px;
+  right: 0px;
+  left: initial;
+  animation-delay: 10s;
+  animation-duration: 25s;
+}

@@ -1,0 +1,494 @@
+---
+title: 'CS103: Mathematical Foundations'
+date: '2024-12-15'
+description: 'P vs. NP and what we can do with computers'
+---
+
+# Intro
+
+Ever wondered what the heck $\textbf{P} \text{ vs. } \textbf{NP}$ is? And why you win a million bucks for solving it? Certainly as a high schooler I didn't really know, and didn't even really know what theoretical CS was really about. I found that 103 really changed that for me.
+
+CS 103 was a very cool class, even if the stuff covered wasn't the most useful stuff for day to day programming. Something that made a huge different was taking it with Sean Szumlanski and Keith Schwarz, both of whom are fantastic, wonderful lecturers.
+
+# Overall Stats for Fall Quarter 2024
+
+I felt it was relatively easy to walk away with an A. The Psets, at least under Keith and Sean, are somewhat challenging, but the exams constitute most of your grade and are quite easy.
+
+Midterm 1:
+
+- 80th percentile: 38/40
+- 60th percentile: 36/40
+- 40th percentile: 32/40
+- 20th percentile: 29/40
+
+Midterm 2:
+
+- 80th percentile: 47/50
+- 60th percentile: 43/50
+- 40th percentile: 39/50
+- 20th percentile: 34/50
+
+Final exam:
+
+- 80th percentile: 54/60
+- 60th percentile: 48/60
+- 40th percentile: 40/60
+- 20th percentile: 30/60
+
+# Meta-Level Stuff
+
+The way I approached 103 was honestly pretty good and worked quite well for me. Most of my time was spent on the psets, and when it came time for exams I didn't feel a need to study very much. The most important key to doing well in this class, at least in an efficient manner, is paying hyper attention in lecture and then starting the psets quite early into the week. The psets are excellent practice and really solidify understanding of material, so paying attention to the psets and solving every single problem by yourself (without any help from TAs) pays dividends.
+
+The big takeaways of this class for me?
+
+- There are a ton of problems that are "unsolvable" by computers
+- There are a ton of problems that cannot be solved _efficiently_ by computers
+- We can model computation and formalize it within mathematics in several ways
+
+I found this class super interesting and something I consider to be a little more niche than the other classes I took in Fall 2024 (like basic linear algebra and introductory CS) so I spent quite a bit more time on this recap.
+
+**Disclaimer: In this recap I'll largely be skipping about the first half of 103 since it's just basic discrete math. I think the results about computability and languages are much more interesting and less cliche.**
+
+# Finite Automata
+
+What is computation? How do we define computation formally? What does it mean to solve a problem with computation?
+
+Computability theory is a branch of theoretical CS that basically just tries to determine what problems we can solve with a computer. If we're trying to prove what computers can and can't do, we need to establish some notion of what computation _even is_.
+
+We'll start with something called an **automaton**, which is a simple mathematical model of a computing device. We can also call them state machines.
+
+The central tenet of a state machine is that we're mimicking the feature of _finite-memory_ that most computers have. The laptop I'm typing this on only has so much space to store information, same with a calculator, or [google's data systems](https://en.wikipedia.org/wiki/Google_data_centers) (which is at least an exabyte, about $10^9$ gigabytes). The point is that all forms of computation have a notion of fixed, finite memory, no matter how big (though this assumption turns out to not be as truthful and helpful, which we'll see later on).
+
+What characteristics do these finite computation machines tend to have? Well, one way to see it is we usually take in some input, and that input causes the computation machine to change some sort of configuration and we can read off an answer. For example, we can punch in some input to a calculator, and then it will change the configuration of the calculator so that it displays the answer (which we can then read).
+
+We'll model this with a collection of states (hence the term state machine) and a series of rules that let us define how we transition from state to state. We'll assume the inputs that we're giving to our machines are strings, and that our automata take as input one character of those strings at a time.
+
+Time for a bit of a terminology bomb!
+
+An **alphabet** is a finite set of characters, that isn't just the empty set. We'll denote alphabet with $\Sigma$. So some we can have $\Sigma = \{ a, b, c \}$ or $\Sigma = \{ a \}$, but $\Sigma \not= \emptyset$.
+
+We say a **string over $\Sigma$** (read: a string over an alphabet) is a finite sequence of characters drawn from $\Sigma$. So if we have $\Sigma = \{ a, b, c\}$, then $abc$, $cba$, or $a$ are all strings over $\Sigma$.
+
+The **empty string** has no characters and is denoted with $\epsilon$. So in programming speak $\epsilon$ = `""`
+
+A **language over $\Sigma$** is a set $L$ consisting of strings over $\Sigma$. For example:
+
+- $L = \{ a, b, c, aa \}$. Here we would say that the strings $a, b \in L$, but $aaabbbbccccc \not \in L$
+- Let $L$ be the language over $\Sigma = \{ a, b\}$ where each string in $L$ contains exactly 1 $a$. Then $L = \{ a, ab, ba, ...\}$. Notice that here $L$ is infinite, which is okay!
+
+Last and most confusing term: $\Sigma^*$ is the set of all strings composed from letters in $\Sigma$. We denote this in formal logic with:
+
+$$
+\Sigma^{*}= \{ w | w \text{ is a string over } \Sigma \}
+$$
+
+Ex:
+
+- $\Sigma = \{ a, b \}$. Then $\Sigma^{*}= \{ \epsilon, a, b, aa, ab, bb, ba, ...\}$. Notice that $\epsilon \in \Sigma^*$: why? Because $\epsilon$ can be composed from letters in $\Sigma$ by simply not taking any letters from $\Sigma$.
+
+With this definition of $\Sigma^*$ we can also formally define what it means for a language $L$ to be a language over $\Sigma$:
+
+$$
+L \text{ is a language over } \Sigma \iff L \subseteq \Sigma^*
+$$
+
+This intuitively makes sense - a language $L$ is only a language over $\Sigma$ if every single one of the strings in $L$ can be composed from the letters in $\Sigma$.
+
+## Deterministic Finite Automata (DFA)
+
+We'll start with a deterministic finite automata, where determinism basically means that, for each state in the DFA, there must be exactly **one** transition defined for each symbol in $\Sigma$.
+
+TODO: Build DFA visualizer and maker
+They look like:
+
+The general idea is that, given some DFA $D$, we have some unique start state, and have some states that are accepting (which means the input "returns true" in a sense) and some states that are not accepting (which is analogous to the computation returning false). Formally, a DFA $D$ must have a **one** unique starting state, and **zero or more** accepting states.
+
+For each character of the input string $w$ that we read off we'll perform some sort of state transition. When we reach the end of the string, we check if the state we've ended up in is accepting or rejecting, and we'll say that $D$ accepts $w$ if and only if $D$ ends up in an accepting state.
+
+We say that the **language of an automaton $D$**, denoted $L(D)$, is the set of strings over $\Sigma$ that $D$ accepts.
+
+Turns out we can do a lot with this pretty simple definition of computation. We can recognize some languages with DFA's, which is to say that given some arbitrary string $w$ over $\Sigma$, we can feed $w$ into a DFA with a language $L$, and be able to tell whether $w$ is in or isn't in $L$.
+
+There are limits to this, though. Turns out that it is impossible to build a DFA with the language $L = \{ a^{n}b^{n}|  n \in \mathbb{N}\}$. Some very simple strings in $L$ include $ab$, $aabb$, $aaabbb$, ..., etc. Given that this is such a simple language, this result can feel a little surprising!
+
+We can immediately begin formalizing the set of languages we can build DFA's for. We call a language a **regular language** if there exists a DFA $D$ such that $L(D) = L$. Formally, if $L$ is a language and $L(D) = L$, then $D$ **recognizes** the language $L$.
+
+TODO: Built hidden extra component, and fill out this proof.
+
+One final definition, just purely because I think it's interesting. $\overline{L}$ denotes the complement of the language $L$, or the language of strings in $\Sigma^*$ that aren't in $L$. So $\overline{L} = \Sigma^{*}- L$.
+
+A fun little theorem:
+**Theorem:** If $L$ is a regular language, then $\overline{L}$ is also a regular language.
+
+Proof: Take some regular language $L$. Since $L$ is regular, there exists some DFA $D$ for which $L$ is the language of $D$. Then, create another DFA $A$ by copying $D$, and then swap all rejecting and accepting states. Consider any string $w \in L$. We will show that $w \not \in \overline{L}$.
+
+We'll circle back to this later, since regular and nonregular languages turn out to be integral to the question of what we can and can't compute.
+
+## Non-deterministic Finite Automata
+
+Non-deterministic Finite Automata (abbreviated as NFA) are like the much more powerful cousins of DFAs. Take some NFA $N$. The main similarity is that we denote some unique state as a starting state, and zero or more states as accepting.
+
+Here's where stuff gets weird. Firstly, NFAs are nondeterministic, which means that there no longer is exactly one choice that the computer can make - instead, there are a finite number of choices to make at each state. We will say that an NFA $N$ accepts a string $w$ if $N$ can make **any** series of choices and lead to an accepting state.
+
+Secondly, NFAs have a special transition called an $\epsilon$-transition. They look like the below:
+
+Essentially, if an $\epsilon$-transition is available at some given state, the NFA now has the additional choice of taking that transition (without "consuming" the next character of the input).
+
+So to repeat again: an NFA, when we're thinking in theoryland, can be thought of as this omnipotent computing machine that can automatically and instantly try all possible choices from each given state when taking an input $w$. If **any** of those choices leads to an accepting state then the NFA accepts $w$. If there is no possible way to end up in the accepting state on some input $w$, then the NFA rejects $w$.
+
+An equivalent way to think of this is that NFAs consume a string of input symbols, and at each step if there are $n$ possible choices to transition from the state, the NFA clones itself $n$ times and follows a different transition within each clone. If no transition is possible than the clone of the NFA dies. If after consuming the total input, any clone of the NFA is accepting, then the input is accepted.
+
+TODO: Add a fun little NFA mitosis animation
+TODO: Go into depth about the intern project and the history
+
+## Subset Construction
+
+From this perspective, we immediately see that DFAs are all a subset of NFAs, since any given DFA is also a valid NFA. There's a super cool thing called **the subset construction** which lets you convert any NFA you want into a DFA, too.
+
+So if any NFA can be converted into a DFA, and every DFA already is an NFA, then it must be the case that the class of languages DFAs and NFAs recognize are the exact same! So any language that is regular has both a DFA and an NFA for it.
+
+## Concatenation and the Kleene Star
+
+Concatenation in programming just means we can have two strings, say `a = "a"` and `b = "b"` and "add" the two strings together, where `a + b = "ab"`. We can define this in formal logic for strings and languages, too!
+
+We define the concatenation of two languages $L_1$ and $L_2$ to be:
+
+$$
+L_1L_{2}= \{ x | \exists w_{1} \in L_{1}. \exists w_{2}\in L_{2}. x = w_{1}w_{2}\}
+$$
+
+From this we get a few more useful terms. We define language exponentiation as follows:
+
+$$
+L^{0}= \{ \epsilon \}, \text{ and } L^{n+1} = LL^{n}
+$$
+
+And define the Kleene closure (or Kleene star) as:
+
+$$
+L^{*} = \{ w \in \Sigma^{*}| \exists n \in \mathbb{N}. w \in L^n\}
+$$
+
+We say that a string $w \in L^*$ if and only if $\exists n \in \mathbb{N}. w \in L^n$.
+
+TODO: Finish theorem
+**Theorem**: If $L$ is a regular language, so is $L^*$.
+
+# Regular Expressions
+
+I'd known that regular expressions are used in search engines, analyzing data, processing test, etc. and are therefore pretty useful for lots of CS applications - but embarrassingly, didn't really have any idea what they were.
+
+The main idea is that a regular expression is a string that itself describes some collection of strings (a language!)
+
+There's some rules, basic building blocks almost, for Regex, and with those basic building blocks you can make some more intricate stuff.
+
+How do we get from DFAs, NFAs, and regular languages to regular expressions? One motivation is that we want to make the regular languages by starting with "atomic" languages we know are regular, and using **closure properties** combine these simpler languages to form more elaborate ones. We're leveraging quite a bit of proofs in the statement "use closure properties", and there's a ton that can be done here. Some theorems include "If $L$ and $W$ are regular languages, so is $L \bigcup W$" or "If $L$ is regular so is $L^*$".
+
+I'll start by outlining what these "atomic" regular languages are:
+
+- $\emptyset$ is the empty language $L = \{ \}$
+- For any character $c \in \Sigma$, the symbol $c$ is a regular expression for the language $\{ c \}$
+- $\epsilon$ is a regular expression for the language $\{ \epsilon \}$ - remember that $\{ \epsilon \} \not = \emptyset \not = \epsilon$.
+- Given two regular expressions $R_1$ and $R_2$, it is the case that $R_1R_2$ is the concatenation of the languages of $R_1$ and $R_2$
+- Similarly $R_{1}\bigcup R_{2}$ is the union of the languages of $R_1$ and $R_2$
+- $R^*$ is the regex for the Kleene star of $R$
+- $b?$ represents the choice of either 1 or 0 of the character $b$
+- $b+$ represents 1 or more of the character $b$
+
+Finally, we give Regexes the following operator precedence:
+
+- $(R)$
+- $R^*$
+- $R_1R_2$
+- $R_{1}\bigcup R_2$
+
+Turns out we can build a lot with these simple syntaxes! The Regex $a \bigcup b$, for example, represents the language $L = \{ a, b \}$. A more complicated one is:
+
+$$
+L = \{ w \in \{ a, b\}^{*} | w \text{ does not contain aa or bb as substrings}\}
+$$
+
+Turns out the Regex for this one is just $b?(ab)^{*}a?$. Any string in $L$ can be represented by this regex. Consider $ababa$. All we have to do is pick $0$ b's to start with, then two $ab$'s, and then one $a$. This will work $\forall w \in L$.
+
+One important result is that the regular languages turn out to be equivalent to the class of languages that can be represented by Regexes, since any regex can be converted into a NFA through an algorithm called Thompson's algorithm (also known as state elimination). It's a really cool algorithm but for brevity I skip over it here. The most important thing to know is that we now have a class of languages called regular languages and all of them are equivalent to one another:
+
+- DFAs
+- NFAs
+- Regexes
+
+Any language that can be represented by any of the above is automatically regular, and therefore has a DFA, NFA, and Regex that recognize the language.
+
+# Nonregular Languages
+
+So we have a big class of languages that are "regular", which we now know can be represented by one of the 3 models of computation we've covered. The intuition of these regular languages are that they correspond to problems that can be solved with **finite memory**. DFAs and NFAs, as well as regular expressions, **cannot** keep track of infinite states (since we modeled them as a form of computation with that exact limit).
+
+Think for a second why the language $L = \{ a^{n}b^{n} | n \in \mathbb{N}\}$ is not regular. Is there any possible DFA or NFA that can recognize any string $w \in L$?
+
+No, there isn't. And the reason why is that there are infinite strings of the form $a^n$. So if we run two strings of the form $a^{n}b^q$ and $a^{m}b^q$ where $m \not = q$, then the two strings have to end up in separate states after processing the initial "a" part. Since there are infinite natural numbers, we need infinite states to keep track of this stuff, which we can't do with _finite_ memory.
+
+This is just an intuition - a formal proof is a difficult task, at least until we establish distinguishability.
+
+We'll define distinguishability as follows: Let $L$ be some language over $\Sigma$. We say that two strings $a, b \in \Sigma^*$ are distinguishable relative to $L$ if there's a string $w \in \Sigma^*$ such that exactly one of $aw$ and $bw$ is in $L$. Formally:
+
+$$
+\exists w \in \Sigma^{*}. (xw \in L \iff yw \not \in L)
+$$
+
+Take $\Sigma = \{ x, y \}$, $L = \{ w \in \Sigma^{*}| w \text{ is a palindrome}\}$. Let $a = x$ and $b = y$. Then, this pair is a distinguishable pair, since letting the string $s = x$, and then appending $s$ to both $a$ and $b$ results in $as = xx$ and $bs = yx$. Only one of these is in $L$, as required.
+
+We say that a distinguishing set for some language $L$ is a set $S$ where:
+
+$$
+\forall x \in S. \forall y \in S. (x \not = y \implies x \text{ is not distinguishable relative to } y)
+$$
+
+This brings us to a nice theorem to tie this discussion off.
+
+**Myhill-Nerode Theorem:** Let $L$ be an arbitrary language. If $L$ has an infinite distinguishing set, then $L$ is not regular.
+
+Proof: Assume for purposes of contradiction that there exists an infinite distinguishing set $S$ for $L$ but $L$ is regular.
+
+Since $L$ is regular there must be a DFA $D$ that recognizes $L$. Let $n$ be the total number of states in $D$. Since there are infinite strings in $S$, pick $n + 1$ distinct strings $w_{1}, w_{2}, ..., w_{n+1}$ from $S$.
+
+If we run $D$ on these strings, we note that there are $n$ states in $D$ and $n+1$ inputs, so by pigeonhole principle there are strings $w_{i}\not = w_{j}$ in $S$ that end up in the same state after being fed through $D$.
+
+Since $w_{i}\not = w_{j}$, by definition of a distinguishing set then $w_i$ is not distinguishable relative to $w_j$. So running $w_i$ and $w_j$ through $D$ results in ending up in two different states.
+
+This is a contradiction, since $w_i$ and $w_j$ end up in the same state. So our initial assumption was wrong, and $L$ is not a regular language $\square$.
+
+This theorem is super useful, since we now have all the tools we need to do proofs about regular and non regular languages.
+
+- To prove a language is regular, make a DFA, NFA, or regex for it
+- To prove a language is non-regular find an infinite distinguishing set for it, then appeal to the Myhill-Nerode theorem to show it's non-regular
+
+That's the stuff covered with regards to computing with finite memory. But in practice we can totally build programs that can check if a string is in $L = \{ a^{n}b^{n} | n \in \mathbb{N} \}$. Let's see what happens when we go to infinite memory.
+
+# Turing Machines
+
+## Basics
+
+For starters, [here's](https://turingmachinesimulator.com/) this super cool online turing machine simulator that I think helps visualize what I'm talking about.
+
+We can think of a turing machine as having two parts: an infinitely long piece of tape subdivided into infinitely many squares (which can either be blank or contain a character), as well as a head (or a cursor) that reads the letter or blank at the cursor's location. The cursor can move to the left or to the right on the tape, according to some set of rules that we give the cursor.
+
+There's infinite tape, so technically there's infinite memory. How is this anything like forms of computation we're used to? The answer is that, whenever we need more memory, for the vast majority of computational routine we can easily find more. There are big data centers and GPU networks that colab can leverage if we need more memory when training a model. If we get close to running out of RAM we can just install more. So it turns out that memory in practice acts more like an infinite resource, since we can always add more (within reason). So for most notions of "computing", we kind of just assume we have infinite memory and can always upgrade our machines if we need more.
+
+Here's an example Turing Machine code:
+
+```
+Start:
+If Blank Return True
+If 'b' Return False
+Write 'x'
+Move Right
+If Not 'b' Return False
+Write 'x'
+Move Right
+Goto Start
+
+ExampleChunk:
+Move Left
+Move Right
+Goto Start
+```
+
+I feel like the functions are pretty self explanatory. `If Blank` or `If 'b'` are checking if the character at the cursor is Blank or "b" and then execute the associated code. `Write 'c'` will write 'c' at the cursor location. `Move Right/Left` will move the cursor left or right. And `Goto` lets us navigate to different chunks of code. If we feed a turing machine some input string and it returns True we say that the Turing machine (TM) accepts the string. If it returns false it rejects. But there's one other thing that can happen. Consider the TM:
+
+```
+Start:
+Move Right
+Move Left
+Goto Start
+```
+
+Here, no matter what input we feed in, the TM will loop infinitely. We say that, given some input to the TM $w$, that the TM "loops" on $w$ if the TM will never return True or False.
+
+This seems super super basic - we have a very limited set of functions to utilize. But it turns out that this thing is just as powerful as the laptop I'm writing this on, or IBM's super computer. In fact, it's as powerful as any device that performs computation can get.
+
+Alonzo Church and Alan Turing came up with the Church-Turing thesis, which states that any method of computation is equally or less powerful than a Turing machine. It's not a theorem, though, since what "effective computation" is doesn't really have a formal definition.
+
+## Decidability and Recognizability
+
+Before we get into the question of what problems we can solve, we need to know what it means to "solve" a problem, formally.
+
+Generally, a weak notion of "solving" a problem would be like if I had some problem, and you gave me a solution to that problem, and all I could do was verify that your solution works. The flip side of this is that, if you gave me a solution that doesn't work, I wouldn't be able to tell.
+
+A stronger notion of solving a problem is if you gave me a solution and I was definitively able to tell you if that solution worked or not.
+
+Formally, we say a TM is a recognizer if
+
+$$
+\forall w \in \Sigma^{*}.(w \in L \iff M \text{ accepts } w)
+$$
+
+Informally this basically says that if you give me some solution to a problem, call it $w$, and I feed it into an associated TM, we _know_ that the TM will halt and return true on that input. But if you gave me some $w \not \in L$, then it must be the case that the TM doesn't accept $w$. **Notably, that doesn't mean that the TM rejects w**. It can also mean the TM loops forever on $w$.
+
+Ok - so isn't this still a strong notion of solving a problem? If the TM loops or returns false on an input then we know that the TM doesn't accept $w$ and therefore $w \not \in L$.
+
+Not quite: Consider the following procedure, starting with some $n \in \mathbb{N}. n > 0$.
+
+- If $n = 1$ the sequence terminates
+- If $n$ is even, set $n = n/2$
+- Otherwise, set $n = 3n + 1$
+- Repeat.
+
+Turns out that all of humanity has no idea whether this sequence terminates for all natural numbers. We know up to numbers as big as $5 \times 2 ^{60}$ that the sequence terminates. But that's not all natural numbers...
+
+So what happens if we have a TM that runs on the hailstone sequence, with as input a number that's larger than what's ever been tested by humanity. If the TM takes a really, really, really long time to terminate, how do we know if it's looping or not? At a certain point, wouldn't it look pretty similar?
+
+The key here is that, for some problems, there really isn't a way to distinguish between whether or not something takes a really really long time or if it loops infinitely. And so there's no real way to tell if a given program will halt or loop forever for any input. And therefore there's no way to tell if the input is in the language or not.
+
+A stronger notion of solving a problem is encoded by something we call a decider. Formally, deciders follow the criterion:
+
+$$
+\forall w \in \Sigma^{*}.M \text{ halts on w}.
+$$
+
+$$
+\forall w \in \Sigma^{*}. (w \in L \iff \text{M accepts w})
+$$
+
+Notice that the addition of the halting condition is super important to the notion of solving a problem. If we know that some TM halts on every input, then it means it returns true or false on every input. So we can definitively tell, for any input $w$, whether or not the TM accepts $w$. This feels like what we typically mean by the statement "we've solved a problem" - that is, for any candidate solution you give me, I can definitively tell you whether or not the solution works or doesn't work (instead of saying I don't know, and that I can't tell whether my program is looping or is just taking a long time).
+
+This takes us to two big things in complexity theory. We define the class **RE** to contain all recognizable languages: that is, there's a recognizer for all languages $L \in \textbf{RE}$. Intuitively, this says that **RE** contains all problems with yes or no answers, where yes answers can be confirmed by a computer (and no answers may or may not be confirmable by a computer).
+
+Similarly, we define the class **R** to contain all languages that can be decided: that is, there's a decider for every language in **R**. This intuitively contains all problems we can "solve" - for any input to any problem with yes/no answers, we can determine whether the answer is yes or no.
+
+Every decider for $L$ is a recognizer for $L$, so **R** $\subseteq$ **RE**. A big theoretical question for a while was whether **R = RE**. And this is a big deal since, if **R = RE**, then any problem we could make a verifier for we could also make a decider for.
+
+Turns out that $\textbf{R} \not = \textbf{RE}$, unfortunately. And understanding why takes a little bit of footwork.
+
+## Encodings
+
+Really quickly - notice that every single object that we can problem solve with on a computer has some sort of data representation. We store images as big matrices, audio files as big matrices, etc. etc.
+
+The point is that most objects we can compute with have some encoding in binary, and therefore have an encoding in strings. Which means we can use them as inputs to Turing machines. Since going through hundreds of different ways of encoding images, or 3-d models, or whatever else is quite time consuming, we'll just use the notation $\langle \text{Obj} \rangle$ to represent the string encoding of the object.
+
+## Emergent Property 1: Universal machines
+
+The laptop I'm writing this on lets me run a TON of programs. I have a few deep learning models I can run with a single click. Webapps I can launch from terminal with npm and node. The program I'm typing this in, Obsidian, is another program controlled by my central laptop.
+
+The point is that, if TMs are as powerful as any form of computing (Church-Turing thesis), then it must be the case that TMs can do the same thing my laptop is doing - that is, run other programs.
+
+Turns out there is, and we call it the universal Turing Machine (denoted as $U_{tm}$). The Turing machine will take in inputs of form $\langle M, w \rangle$, where $M$ is a Turing machine and $w$ is an input to $M$. And the $U_{tm}$ will simulate $M$ running on $w$ and does whatever $M$ does on $w$. So if $M$ loops on $w$, $U_{tm}$ will loop on $\langle M, w \rangle$. How do we know such a TM exists? Alan Turing built one, himself, right in [this paper](https://www.cs.virginia.edu/~robins/Turing_Paper_1936.pdf?utm_source=chatgpt.com). It's a dense read, but pretty cool.
+
+We also have a new language to work with, $A_{TM}$, which is the language recognized by the TM $U_{TM}$. So:
+
+$$
+\forall M. \forall w \in \Sigma^{*}. (M \text{ accepts } w \iff \langle M, w \rangle \in A_{TM})
+$$
+
+The intuition behind how to build $U_{TM}$ is just that we have one section of the tape designated for the source code, and another section holding the contents of the TM that the $U_{tm}$ is simulating. Then, the $U_{tm}$ will mark where in the TM's tape the simulated TM's tape head is, and then repeatedly consult the source code of the simulated TM to determine what to do. Since the $U_{tm}$ can run any program, it can perform any computation any TM, and therefore any notion of computing, and is therefore the most powerful computation device that can ever be built. All from the church-turing thesis!
+
+## Emergent Property 2: Self-Reference
+
+You may have heard of a **quine** before, which is a program that prints its own source code. This is actually bundled up nicely into a theorem, which states:
+
+**Theorem**: It is possible to construct TMs that perform arbitrary computations on their own source code.
+
+Right now we only need the fact that programs can self reference for one tiny thing, so we'll skip over the proof and deeper applications.
+
+Here's a one line quine thanks to [LMU](https://cs.lmu.edu/~ray/notes/quineprograms/).
+
+`s='s=%r;print(s%%s)';print(s%s)`
+
+This code prints its own source code, which is pretty neat.
+
+# Unsolvable problems
+
+So why was talking about Self-reference and Universal machines necessary? We're going to use these two properties to prove that **R** $\not =$ **RE**.
+
+For starters, we know that $A_{TM}$ is a recognizable language since $U_{TM}$ is a recognizer we've built for it. But is $A_{TM}$ decidable? If it's not, then we've found something in **RE** but not in **R**, so the two classes cannot be equal to one another.
+
+One more thing before this proof: since TMs are just as powerful as a good old .py file, we'll just be using a function and standard programming syntax in this proof.
+
+**Theorem:** $A_{TM}$ is undecidable.
+
+Proof: By contradiction. Assume that $A_{TM}$ is decidable. Then, there exists a function:
+
+```python
+def decider(string function, string input):
+	# returns true if function(input) returns true
+	# returns false if function(input) returns false
+```
+
+Now consider a function:
+
+```python
+bool trickser(string input):
+	string me = # source code of trickster
+	return !decider(me, input)
+```
+
+Then we see that trickster(input) returns true if and only if decider(me, input) returns false, which returns false if and only if trickster(input) returns false. So trickster(input) returns true if and only if trickster(input) returns false. This is a contradiction, so a decider cannot exist for $A_{TM} \square$.
+
+Woah - $A_{TM}$ is undecidable, yet recognizable. This means that, at a fundamental level, **there is a difference between what is true and what we can discover is true**.
+
+There's tons of applications for this. One of them is a formal proof for why no electronic voting machine can **ever** be secure (and therefore we should never use electronic voting machines).
+
+A general setup for this problem is, given some TM that someone claims is a secure voting machine, could we actually check and regulate whether or not the TM is a secure voting machine? Turns out the answer is no.
+
+The proof is very similar to the proof for why $A_{TM}$ is undecidable. The general idea is that, by contradiction, there exists a decider $D$ for the problem, namely that it will take as input a voting machine and return whether it's a fair or unfair voting machine. Then define some trickster function (similar to the proof for $A_{TM}$) as follows:
+
+```python
+def trickster(string input):
+	string me = # source code of trickster
+	if (isSecureVotingMachine(me)):
+		return # incorrect election result
+	else:
+		return # correct election result
+```
+
+Then what we see is that D will return true if and only if trickster is a secure voting machine, and that D will return true if and only if trickster is not a secure voting machine. So trickster is and isn't a secure voting machine, simultaneously, which is a contradiction.
+
+Honestly, the biggest takeaway is that there's **a fundamental limit to what math can tell us**. There are true things in the world that we can never prove (i.e build a decider) for. And that mathematics has a fundamental limit to its power (though it's super powerful as is). Maybe that makes you feel a little sad for some reason? In the same way you might get sad at the fact that you will never get to travel the planets, and that humanity will probably never travel to other galaxies and see those stars for themselves. Who knew CS could also teach us about what math can do though?
+
+# Complexity
+
+Big O is the thing that makes leetcode problems challenging. After all, what good what two-sum be if it didn't matter how efficient you algorithm was and everything you coded was O(n!)? You probably wouldn't be considered a very good programmer.
+
+The point is that we care a lot about what problems we can solve "efficiently". Efficient algorithms could mean billions of dollars or years saved. To be brief, we'll classify any program with a polynomial big O (like $O(n^2)$, $O(2n + 3n^{37}+ 25n^{2731})$ as having an efficient runtime. Anything exponential or factorial has a terrible scaling curve, and so those are "inefficient" algorithms. Notice this isn't a perfect definition - if you code an algorithm with an $O(n^{124249182498124})$ runtime then you could hardly call it efficient. But it's a start.
+
+Quickly - we'll call a verifier a program that basically takes in as input some candidate solution to a problem and a certificate "c" as input, and returns whether or not the candidate is indeed a solution or isn't. Formally, a verifier is TM $V$ that satisfies:
+
+$$
+V \text{ halts on all inputs}
+$$
+
+$$
+\forall w \in \Sigma^{*}.(w \in L \iff \exists c \in \Sigma^{*}. V \text{ accepts \langle w, c \rangle})
+$$
+
+Basically the verifier doesn't really "solve" a problem, but can "verify" that some solution is indeed a solution to a problem. For example, in the hailstone sequence we looked at earlier, it's pretty easier to build a verifier. We just take as input some number $n$, and the number of steps the verifier should run the hailstone sequence for. A "correct solution" will provide the number of steps required for the hailstone sequence to halt for a number $n$, and all the verifier has to do is check the provided number of steps. If the hailstone sequence doesn't terminate within the provided number of steps, it returns false, since no proof of a solution was ever provided.
+
+We'll define the class **P** to contain all problems that can be solved in polynomial time. In other words, **P** contains all languages that have a decider that runs in polynomial time. Similarly, we'll define **NP** to be the class of all problems that can be **verified** in polynomial time (i.e we can build a polynomial time verifier for the problem).
+
+Similar to **R** and **RE**, it's natural to wonder whether **P** $=$ **NP**. And it turns out that we have no idea. It's been unsolved for decades and you win a million bucks if you solve the problem.
+
+It's the biggest question in theoretical computer science because the ramifications are important. There are **tons** of problems that we can efficiently verify, but the only solutions humanity has come up with are stuff like recursive backtracking which takes O($2^n$) of worse complexity. Name a discipline and there's almost certainly a problem with efficient verifiers but non-efficient solutions. From gene sequencing to home construction to compiler resource allocation. [Here's a list of some of em](https://en.wikipedia.org/wiki/List_of_NP-complete_problems).
+
+And the big thing is that if **P** $=$ **NP**, then all these problems have efficient solutions and we just haven't found them yet. If **P** $\not =$ **NP** then none of these problems have efficient solutions.
+
+# Reducibility
+
+Given some undirected graph $G$, a matching in $G$ is a set of edges such that no two edges share an endpoint. A maximum matching is a matching with the largest number of edges.
+
+Turns out we can also tile grids with dominos, and that the solution requires finding a maximum matching (and representing the grid as a set of nodes).
+
+The intuition idea is that tiling a domino grid can't be harder than solving maximum matching, since solving maximum matching efficiently has as a corollary solving domino tiling efficiently.
+
+In general, if $X$ and $Y$ are problems where we can solve $X$ by solving $Y$ in polynomial-time, then we say $X$ is polynomial-time reducible to $Y$. We denote this as $X \leq_{p}Y$. This relation lets us rank the relative difficulties of problems in **P** and **NP**.
+
+For languages $A$ and $B$, $A \leq_{p}B$ if $A$ reduces to $B$ in polynomial times (so $B$ is at least as hard as $A$).
+
+A language $L$ is NP-hard if $\forall A \in \textbf{NP}. A \leq_{p}L$. (so $L$ is at least as hard as every problem in **NP**, since every problem in **NP** reduces to $L$).
+
+A language $L$ is **NP**-complete if $L \in \textbf{NP}$ and $L$ is **NP**-hard (so intuitively these **NP**-complete problems are the hardest problems in **NP**).
+
+This is useful since, if ANY **NP**-complete language is in **P**, then **P = NP**, since the hardest problems in **NP** can be solved in polynomial time, and all other problems will reduce and can be solved in polynomial time.
+
+I always wondered what the importance of solving a single problem (AKA any NP-complete problem) was to the biggest open question in computer science, and this is why. If anyone comes up with an efficient algorithm to any problem in [this list](https://en.wikipedia.org/wiki/List_of_NP-complete_problems), then they've solved **P = NP**.
+
+# Conclusion
+
+CS 103 was by far my favourite class during Autumn 2024, and I hope it's apparent why this was the case even if you've made it this far and read only bits and pieces. In one class we reach the bounds of human knowledge and understand the biggest open problem in computer science. The class moves fast, for sure, but I can seldom name another course that is so well supported and reaches depth.

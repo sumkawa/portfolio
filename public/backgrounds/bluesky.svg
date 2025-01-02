@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient27">
+      <stop
+         style="stop-color:#101824;stop-opacity:1;"
+         offset="0"
+         id="stop62" />
+      <stop
+         style="stop-color:#0f1f50;stop-opacity:1;"
+         offset="0.41225165"
+         id="stop63" />
+      <stop
+         style="stop-color:#0e267d;stop-opacity:1;"
+         offset="0.55215228"
+         id="stop64" />
+      <stop
+         style="stop-color:#2f4eae;stop-opacity:1;"
+         offset="0.72817129"
+         id="stop65" />
+      <stop
+         style="stop-color:#ae692f;stop-opacity:1;"
+         offset="0.80132449"
+         id="stop66" />
+    </linearGradient>
+    <filter
+       height="1.6320267"
+       y="-0.31601334"
+       width="1.8764897"
+       x="-0.43824487"
+       style="color-interpolation-filters:sRGB"
+       id="filter20">
+      <feGaussianBlur
+         stdDeviation="17.435755"
+         result="result8"
+         id="feGaussianBlur17" />
+      <feTurbulence
+         seed="27"
+         result="result7"
+         type="fractalNoise"
+         numOctaves="5"
+         baseFrequency="0.030000000000000006"
+         id="feTurbulence17" />
+      <feComposite
+         in2="result8"
+         result="result6"
+         operator="over"
+         in="result7"
+         id="feComposite17" />
+      <feColorMatrix
+         result="result9"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 6 -4 "
+         id="feColorMatrix17" />
+      <feDisplacementMap
+         in="result7"
+         in2="result9"
+         xChannelSelector="A"
+         yChannelSelector="A"
+         scale="45"
+         result="result4"
+         id="feDisplacementMap17" />
+      <feComposite
+         in2="result4"
+         result="result2"
+         operator="in"
+         in="result8"
+         id="feComposite18" />
+      <feComposite
+         result="fbSourceGraphic"
+         in="result2"
+         operator="in"
+         in2="result9"
+         id="feComposite19" />
+      <feComposite
+         operator="arithmetic"
+         k2="1"
+         k1="0.5"
+         in="fbSourceGraphic"
+         in2="fbSourceGraphic"
+         result="result91"
+         id="feComposite20"
+         k3="0"
+         k4="0" />
+      <feBlend
+         in="fbSourceGraphic"
+         mode="multiply"
+         in2="result91"
+         id="feBlend20" />
+    </filter>
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient28"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475"
+       gradientUnits="userSpaceOnUse" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath32">
+      <rect
+         style="fill:none;fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23"
+         id="rect33"
+         width="85.071877"
+         height="138.38876"
+         x="321.07767"
+         y="98.401093"
+         ry="0" />
+    </clipPath>
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient33"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient34"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient35"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient36"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient37"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient38"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient39"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient40"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+    <linearGradient
+       xlink:href="#linearGradient27"
+       id="linearGradient41"
+       gradientUnits="userSpaceOnUse"
+       x1="363.7399"
+       y1="13.124362"
+       x2="368.61203"
+       y2="292.2475" />
+  </defs>
+  <g
+     id="layer1">
+    <g
+       id="g27"
+       style="fill:url(#linearGradient28)"
+       clip-path="url(#clipPath32)"
+       transform="matrix(2.6840894,0,0,2.2505967,-868.11276,-233.47927)">
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient33);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect17"
+         width="95.485001"
+         height="132.41786"
+         x="315.28064"
+         y="65.75853" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient34);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect20"
+         width="95.485001"
+         height="132.41786"
+         x="268.43893"
+         y="108.09621" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient35);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect21"
+         width="95.485001"
+         height="132.41786"
+         x="337.80069"
+         y="122.50905" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient36);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect22"
+         width="95.485001"
+         height="132.41786"
+         x="368.42795"
+         y="61.25452" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient37);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect23"
+         width="95.485001"
+         height="132.41786"
+         x="354.91592"
+         y="76.568153" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient38);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect24"
+         width="95.485001"
+         height="132.41786"
+         x="300.86783"
+         y="88.27858" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient39);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect25"
+         width="95.485001"
+         height="132.41786"
+         x="325.18945"
+         y="118.00504" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient40);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect26"
+         width="95.485001"
+         height="132.41786"
+         x="356.71753"
+         y="91.88179" />
+      <rect
+         style="mix-blend-mode:normal;fill:url(#linearGradient41);fill-opacity:1;stroke-width:0.264583;stroke-opacity:0.23;filter:url(#filter20)"
+         id="rect27"
+         width="95.485001"
+         height="132.41786"
+         x="328.79266"
+         y="50.444904" />
+    </g>
+  </g>
+</svg>

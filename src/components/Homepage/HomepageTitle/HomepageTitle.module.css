@@ -1,0 +1,30 @@
+.Title {
+  font-size: clamp(2rem, 10vw, 12rem);
+  color: white;
+  font-family: var(--font-opensans);
+  margin-top: 15vh;
+  font-weight: 100;
+  line-height: 1.1;
+}
+
+.TitleName {
+  font-weight: 500;
+}
+
+.subText {
+  font-weight: 100;
+  font-size: clamp(1rem, 2vw, 4rem);
+  color: white;
+}
+
+@media (max-width: 950px) {
+  .Title {
+    margin-top: 10vh;
+  }
+}
+
+@media (max-width: 420px) {
+  .subText {
+    display: none;
+  }
+}

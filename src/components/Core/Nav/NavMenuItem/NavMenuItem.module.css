@@ -1,0 +1,84 @@
+.navMenuItem {
+  cursor: pointer;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+  width: 100%;
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background-color: #eee9e4;
+  display: none;
+}
+
+.index {
+  width: 4ch;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .index {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .index {
+    font-size: 2.25rem;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: clamp(2rem, 2.5vw, 4rem);
+  flex: 1;
+}
+
+.arrow {
+  height: 1.5rem;
+  width: 1.5rem;
+  stroke: white;
+  color: white;
+}
+
+.bottomLine {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background-color: white;
+  width: 100%;
+  transform-origin: left;
+}
+
+.mobileArrow {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .index {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .arrow {
+    display: none;
+  }
+  .mobileArrow {
+    display: block;
+  }
+}

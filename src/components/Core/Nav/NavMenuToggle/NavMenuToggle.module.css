@@ -1,0 +1,19 @@
+.parent {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .parent {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    stroke: white;
+    color: white;
+    border: none;
+    background-color: transparent;
+  }
+}

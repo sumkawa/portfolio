@@ -47,40 +47,38 @@ export default async function BlogHome() {
   return (
     <main className={styles.mainContent}>
       <Navbar />
-      <div className={styles.overWrapper}>
-        <div className={styles.wrapper}>
-          <section className={styles.textWrapper}>
-            <h1 className={styles.mainHeader}>
-              Writings<p style={{ color: '#0165FC' }}>.</p>
-            </h1>
-            <HorizontalBar height={'1px'} width={'120px'} color={'#0165FC'} />
-            <p className={styles.bodyText}>
-              Every now and then I{"'"}ll have some random thoughts I quickly
-              jot down.
-            </p>
-          </section>
-          <section className={styles.blogContent}>
-            {writings.map((post, idx) => (
-              <React.Fragment key={post.slug}>
-                <BlogPostCard
-                  title={post.title}
-                  date={post.date}
-                  link={`/blog/writings/${post.slug}`}
-                  blogType='writings'
-                >
-                  {post.description}
-                </BlogPostCard>
-                {idx < writings.length - 1 && (
-                  <HorizontalBar
-                    height={'1px'}
-                    width={'100%'}
-                    color={'#B9BBC6'}
-                  />
-                )}
-              </React.Fragment>
-            ))}
-          </section>
-        </div>
+      <div className={styles.wrapper}>
+        <section className={styles.textWrapper}>
+          <h1 className={styles.mainHeader}>
+            Writings<p style={{ color: '#0165FC' }}>.</p>
+          </h1>
+          <HorizontalBar height={'1px'} width={'120px'} color={'#0165FC'} />
+          <p className={styles.bodyText}>
+            Every now and then I{"'"}ll have some random thoughts I quickly jot
+            down.
+          </p>
+        </section>
+        <section className={styles.blogContent}>
+          {writings.map((post, idx) => (
+            <React.Fragment key={post.slug}>
+              <BlogPostCard
+                title={post.title}
+                date={post.date}
+                link={`/blog/writings/${post.slug}`}
+                blogType='writings'
+              >
+                {post.description}
+              </BlogPostCard>
+              {idx < writings.length - 1 && (
+                <HorizontalBar
+                  height={'1px'}
+                  width={'100%'}
+                  color={'#B9BBC6'}
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </section>
       </div>
     </main>
   );

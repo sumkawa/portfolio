@@ -35,15 +35,13 @@ export default async function ProjectPage(props: { params: tParams }) {
   return (
     <main className={styles.mainContent}>
       <Navbar />
-      <div className={styles.overWrapper}>
-        <div className={styles.wrapper}>
-          <section className={styles.textWrapper}>
-            <div className={styles.date}>{data.frontmatter.date}</div>
-            <h1 className={styles.mainHeader}>{data.frontmatter.title}</h1>
-            <HorizontalBar height={'1px'} width={'120px'} color={'#C41E3A'} />
-            <div className='prose'>{data.content}</div>
-          </section>
-        </div>
+      <div className={styles.wrapper}>
+        <section className={styles.textWrapper}>
+          <div className={styles.date}>{data.frontmatter.date}</div>
+          <h1 className={styles.mainHeader}>{data.frontmatter.title}</h1>
+          <HorizontalBar height={'1px'} width={'120px'} color={'#C41E3A'} />
+          <div className='prose'>{data.content}</div>
+        </section>
       </div>
     </main>
   );

@@ -23,6 +23,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .Title {
+    padding-top: 17vh;
+  }
+}
+
 @media (max-width: 420px) {
   .subText {
     display: none;

@@ -5,13 +5,6 @@
   justify-content: flex-start;
 }
 
-.overWrapper {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  perspective: 10px;
-}
-
 .wrapper {
   overflow-y: hidden;
   overflow-x: hidden;

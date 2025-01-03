@@ -49,41 +49,39 @@ export default async function BlogHome() {
   return (
     <main className={styles.mainContent}>
       <Navbar />
-      <div className={styles.overWrapper}>
-        <div className={styles.wrapper}>
-          <section className={styles.textWrapper}>
-            <h1 className={styles.mainHeader}>
-              Stanford EECS<p style={{ color: '#C41E3A' }}>.</p>
-            </h1>
-            <HorizontalBar height={'1px'} width={'120px'} color={'#C41E3A'} />
-            <p className={styles.bodyText}>
-              I love learning but don{"'"}t like forgetting what I{"'"}ve
-              learned. Here I do my best to document interesting and useful
-              stuff from courses I{"'"}ve taken and other sources.
-            </p>
-          </section>
-          <section className={styles.blogContent}>
-            {stanford.map((post, idx) => (
-              <React.Fragment key={post.slug}>
-                <BlogPostCard
-                  title={post.title}
-                  date={post.date}
-                  link={`/blog/stanford/${post.slug}`}
-                  blogType='stanford'
-                >
-                  {post.description}
-                </BlogPostCard>
-                {idx < stanford.length - 1 && (
-                  <HorizontalBar
-                    height={'1px'}
-                    width={'100%'}
-                    color={'#B9BBC6'}
-                  />
-                )}
-              </React.Fragment>
-            ))}
-          </section>
-        </div>
+      <div className={styles.wrapper}>
+        <section className={styles.textWrapper}>
+          <h1 className={styles.mainHeader}>
+            Stanford EECS<p style={{ color: '#C41E3A' }}>.</p>
+          </h1>
+          <HorizontalBar height={'1px'} width={'120px'} color={'#C41E3A'} />
+          <p className={styles.bodyText}>
+            I love learning but don{"'"}t like forgetting what I{"'"}ve learned.
+            Here I do my best to document interesting and useful stuff from
+            courses I{"'"}ve taken and other sources.
+          </p>
+        </section>
+        <section className={styles.blogContent}>
+          {stanford.map((post, idx) => (
+            <React.Fragment key={post.slug}>
+              <BlogPostCard
+                title={post.title}
+                date={post.date}
+                link={`/blog/stanford/${post.slug}`}
+                blogType='stanford'
+              >
+                {post.description}
+              </BlogPostCard>
+              {idx < stanford.length - 1 && (
+                <HorizontalBar
+                  height={'1px'}
+                  width={'100%'}
+                  color={'#B9BBC6'}
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </section>
       </div>
     </main>
   );

@@ -31,3 +31,17 @@
   width: 100vw;
   z-index: -1;
 }
+
+@media (max-width: 768px) {
+  .background1,
+  .background2,
+  .background3,
+  .background4,
+  .foreground {
+    object-fit: cover;
+    position: absolute;
+    height: 50vh;
+    width: 100vw;
+    z-index: -1;
+  }
+}

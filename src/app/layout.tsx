@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Open_Sans, Roboto_Mono, Bitter } from 'next/font/google';
 import './globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -50,6 +51,7 @@ export default function RootLayout({
         className={`${openSans.variable} ${robotoMono.variable} ${bitter.variable}`}
       >
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );

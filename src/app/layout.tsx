@@ -40,6 +40,11 @@ export default function RootLayout({
           integrity='sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+'
           crossOrigin='anonymous'
         />
+        <link rel='preload' href='/hero_homepage/background_1.svg' as='image' />
+        <link rel='preload' href='/hero_homepage/background_2.svg' as='image' />
+        <link rel='preload' href='/hero_homepage/background_3.svg' as='image' />
+        <link rel='preload' href='/hero_homepage/background_4.svg' as='image' />
+        <link rel='preload' href='/hero_homepage/foreground_5.svg' as='image' />
       </head>
       <body
         className={`${openSans.variable} ${robotoMono.variable} ${bitter.variable}`}

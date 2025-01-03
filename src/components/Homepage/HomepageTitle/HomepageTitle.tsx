@@ -13,6 +13,7 @@ function HomepageTitle() {
           type: 'spring',
           stiffness: 100,
           damping: 20,
+          delay: 0.8,
         }}
       >
         <p className={styles.Title}>

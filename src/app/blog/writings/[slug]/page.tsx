@@ -7,19 +7,21 @@ import styles from './slug.module.css';
 import Navbar from '@/components/Core/Nav/Navbar/Navbar';
 import HorizontalBar from '@/components/Core/HorizontalBar/HorizontalBar';
 
-type tParams = Promise<{ slug: string[] }>;
+interface Frontmatter {
+  title: string;
+  date: string;
+}
 
-export default async function ProjectPage(props: { params: tParams }) {
-  const { slug } = await props.params;
+export default async function ProjectPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = params;
   const content = await fs.readFile(
     path.join(process.cwd(), 'src/writings', `${slug}.mdx`),
     'utf-8'
   );
-
-  interface Frontmatter {
-    title: string;
-    date: string;
-  }
 
   const data = await compileMDX<Frontmatter>({
     source: content,
@@ -47,4 +49,15 @@ export default async function ProjectPage(props: { params: tParams }) {
       </div>
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  const files = await fs.readdir(path.join(process.cwd(), 'src/writings'));
+  const slugs = files.map((file) => ({
+    slug: file.replace(/\.mdx$/, ''),
+  }));
+
+  return slugs.map((slug) => ({
+    params: slug,
+  }));
 }

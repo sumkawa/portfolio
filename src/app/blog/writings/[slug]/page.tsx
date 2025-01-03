@@ -7,13 +7,12 @@ import styles from './slug.module.css';
 import Navbar from '@/components/Core/Nav/Navbar/Navbar';
 import HorizontalBar from '@/components/Core/HorizontalBar/HorizontalBar';
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type tParams = Promise<{ slug: string[] }>;
+
+export default async function ProjectPage(props: { params: tParams }) {
+  const { slug } = await props.params;
   const content = await fs.readFile(
-    path.join(process.cwd(), 'src/writings', `${params.slug}.mdx`),
+    path.join(process.cwd(), 'src/writings', `${slug}.mdx`),
     'utf-8'
   );
 

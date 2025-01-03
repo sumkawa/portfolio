@@ -12,12 +12,10 @@ interface Frontmatter {
   date: string;
 }
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
+type tParams = Promise<{ slug: string[] }>;
+
+export default async function ProjectPage(props: { params: tParams }) {
+  const { slug } = await props.params;
   const content = await fs.readFile(
     path.join(process.cwd(), 'src/stanford_classes', `${slug}.mdx`),
     'utf-8'

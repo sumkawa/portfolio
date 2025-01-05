@@ -81,7 +81,7 @@
 
 .subText {
   font-weight: 400;
-  font-size: clamp(1.3rem, 3.8vw, 6rem);
+  font-size: clamp(1.3rem, 3.8vw, 4rem);
   color: white;
   margin-top: 5vh;
   margin-bottom: 5vh;
@@ -103,5 +103,10 @@
     background-position: center;
     background-size: cover;
     min-height: 50vh;
+  }
+}
+@media (max-width: 1200px) {
+  .aboutMe {
+    padding: 0;
   }
 }

@@ -1,5 +1,8 @@
+'use client';
 import React from 'react';
 import styles from './HeroGrid.module.css';
+import Link from 'next/link';
+import { motion, MotionConfig } from 'framer-motion';
 
 function HeroGrid() {
   return (
@@ -27,8 +30,26 @@ function HeroGrid() {
           </ul>
         </div>
       </div>
-      <div className={styles.div3}>Cool Ideas</div>
-      <div className={styles.div4}>Writings</div>
+      <MotionConfig transition={{ duration: 0.125 }}>
+        <Link className={styles.div3} href={'/blog/learnings'} passHref>
+          <motion.div
+            className={styles.buttonLink}
+            whileHover={{ rotate: '10deg' }}
+            whileTap={{ scale: 0.9 }}
+          >
+            Cool Ideas
+          </motion.div>
+        </Link>
+        <Link className={styles.div4} href={'/blog/writings'} passHref>
+          <motion.div
+            className={styles.buttonLink}
+            whileHover={{ rotate: '10deg' }}
+            whileTap={{ scale: 0.9 }}
+          >
+            Writings
+          </motion.div>
+        </Link>
+      </MotionConfig>
     </div>
   );
 }

@@ -8,13 +8,13 @@ function BigScreenNav() {
   return (
     <MotionConfig transition={{ duration: 0.125, ease: 'easeInOut' }}>
       <div className={styles.navBigScreen}>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.85 }}>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
           <Link href='/blog/writings' className={styles.navBigItem} passHref>
             Writings
           </Link>
         </motion.div>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.85 }}>
-          <Link href='/blog/stanford' className={styles.navBigItem} passHref>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Link href='/blog/learnings' className={styles.navBigItem} passHref>
             Stuff I{"'"}ve Learned
           </Link>
         </motion.div>

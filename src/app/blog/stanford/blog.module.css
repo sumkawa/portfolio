@@ -1,24 +1,12 @@
 .mainContent {
   background-color: #0c0d0f;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-}
-
-.overWrapper {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  perspective: 10px;
 }
 
 .wrapper {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  margin: 120px clamp(30px, 5vw, 500px); /* Dynamic margin */
-  border-radius: 10px;
+  margin: 120px clamp(30px, 5vw, 500px);
+  border-radius: 20px;
   background-color: #18181b;
+  position: relative;
 }
 
 .textWrapper {
@@ -33,12 +21,12 @@
 }
 
 .bodyText {
-  font-size: clamp(0.8rem, 2vw, 2rem); /* Responsive font size */
+  font-size: clamp(0.8rem, 2vw, 2rem);
   color: #eeeef0;
 }
 
 .bodyTextWrapper {
-  padding: clamp(15px, 3vw, 25px); /* Responsive padding */
+  padding: clamp(15px, 3vw, 25px);
 }
 
 .blogContent {

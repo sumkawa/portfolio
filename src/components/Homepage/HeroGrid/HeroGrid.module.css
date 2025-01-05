@@ -36,3 +36,10 @@
     font-size: 1.1rem;
   }
 }
+
+@media (max-width: 1200px) {
+  .gridParent {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}

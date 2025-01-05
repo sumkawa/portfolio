@@ -1,14 +1,13 @@
 .mainContent {
   background-color: #0c0d0f;
   min-height: 100vh;
-}
-
-.overWrapper {
+  align-items: center;
+  justify-content: flex-start;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  perspective: 10px;
 }
+
 .wrapper {
   overflow-y: hidden;
   overflow-x: hidden;

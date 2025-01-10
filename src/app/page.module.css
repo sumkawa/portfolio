@@ -57,19 +57,19 @@
 }
 
 .main {
-  position: relative;
+  /* position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-  transform-style: preserve-3d;
-  z-index: -1;
+  justify-content: flex-start; */
   background-image: url(/hero_homepage/background_1.svg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
 }
 
 .links {

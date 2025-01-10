@@ -4,8 +4,7 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  width: 1000px;
-  height: 500px;
+  max-width: 1500px;
   font-family: var(--font-roboto-mono);
   .div1 {
     grid-area: 1 / 1 / 2 / 3;

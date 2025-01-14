@@ -6,7 +6,7 @@ import React from 'react';
 
 function HeroBackground() {
   return (
-    <div className={styles.parallaxContainer}>
+    <>
       <Image
         src='/hero_homepage/background_2.svg'
         alt='Very Background Mountain'
@@ -41,7 +41,7 @@ function HeroBackground() {
       />
       <HomepageTitle />
       <ScrollArrow />
-    </div>
+    </>
   );
 }
 

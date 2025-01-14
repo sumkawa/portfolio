@@ -68,7 +68,7 @@ export default async function BlogHome() {
                 <BlogPostCard
                   title={post.title}
                   date={post.date}
-                  link={`/blog/stanford/${post.slug}`}
+                  link={`/blog/learnings/${post.slug}`}
                   blogType='stanford'
                 >
                   {post.description}

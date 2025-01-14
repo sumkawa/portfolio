@@ -1,7 +1,5 @@
 import React from 'react';
 import Navbar from '@/components/Core/Nav/Navbar/Navbar';
-import HeroBackground from '../components/Homepage/HeroBackground';
-import Stars from '../components/Homepage/Stars';
 import styles from './page.module.css';
 import Image from 'next/image';
 import HeroGrid from '@/components/Homepage/HeroGrid/HeroGrid';

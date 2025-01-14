@@ -6,7 +6,7 @@
   /* mix-blend-mode: difference; */
   z-index: 100;
   width: 100%;
-  background: black;
+  background: red;
   @supports (backdrop-filter: blur(16px)) or
     (-webkit-backdrop-filter: blur(16px)) {
     background: hsl(0deg 0% 0% / 0.5);

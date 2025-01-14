@@ -1,63 +1,3 @@
-.parallax {
-  position: relative;
-  z-index: 0;
-  min-height: 75vh;
-  display: grid;
-  grid-template-areas: 'stack';
-}
-
-.parallax > * {
-  grid-area: stack;
-  animation: parallax linear;
-  animation-timeline: scroll();
-}
-
-.parallax > img {
-  width: 100%;
-}
-
-/* Parallax Styling */
-.background1,
-.background2,
-.background3,
-.background4,
-.foreground {
-  object-fit: cover;
-  min-height: 100%;
-  width: 100%;
-}
-
-.hero,
-.heroTitle {
-  --parallax-speed: 10;
-  z-index: 10;
-}
-
-.background1 {
-  --parallax-speed: 5;
-  z-index: 1;
-}
-
-.background2 {
-  --parallax-speed: 10;
-  z-index: 2;
-}
-
-.background3 {
-  --parallax-speed: 15;
-  z-index: 3;
-}
-
-.background4 {
-  --parallax-speed: 20;
-  z-index: 4;
-}
-
-.foreground {
-  z-index: 999;
-  align-self: end;
-}
-
 .homepageText {
   display: flex;
   flex-direction: column;
@@ -81,8 +21,10 @@
     hsl(259deg 100% 3%) 53%,
     hsl(0deg 0% 0%) 86%
   );
-  position: relative;
   color: #eeeef0;
+  z-index: 20;
+  width: 100%;
+  position: relative;
 }
 
 .scrollPast {
@@ -97,6 +39,15 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 10px;
+  z-index: -1;
+}
+
 .info {
   padding: 20px;
 }
@@ -105,20 +56,21 @@
   padding: 20px;
 }
 
-/* .main {
+.main {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 100vh;
+  transform-style: preserve-3d;
+  z-index: -1;
   background-image: url(/hero_homepage/background_1.svg);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-} */
+  min-height: 100vh;
+}
 
 .links {
   display: flex;
@@ -156,38 +108,5 @@
 @media (max-width: 1200px) {
   .aboutMe {
     padding: 0;
-  }
-}
-
-@keyframes parallax {
-  to {
-    transform: translateY(calc(var(--parallax-speed) * 100px));
-  }
-}
-.hero {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-
-.heroTitle {
-  font-size: 6rem;
-  max-width: 10ch;
-  line-height: 1;
-  font-style: italic;
-  font-weight: 900;
-  position: relative;
-  color: white;
-  top: 300px;
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: black;
-    z-index: -1;
-    scale: 2;
-    opacity: 0.5;
-    filter: blur(5rem);
-    translate: -50%;
   }
 }

@@ -53,7 +53,7 @@ export default async function BlogHome() {
         <div className={styles.wrapper}>
           <section className={styles.textWrapper}>
             <h1 className={styles.mainHeader}>
-              Stanford EECS<p style={{ color: '#C41E3A' }}>.</p>
+              Cool Stuff I{"'"}ve Learned<p style={{ color: '#C41E3A' }}>.</p>
             </h1>
             <HorizontalBar height={'1px'} width={'120px'} color={'#C41E3A'} />
             <p className={styles.bodyText}>

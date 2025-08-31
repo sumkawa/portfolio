@@ -23,7 +23,7 @@ function Navbar() {
             alt="Summit's Logo"
           />
         </Link>
-        <BigScreenNav />
+        {/* <BigScreenNav /> */}
         <div className={styles.separator} />
         <NavMenuToggle menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </div>

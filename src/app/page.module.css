@@ -34,10 +34,12 @@
   align-items: center;
 }
 .aboutMe {
-  padding: 0 100px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .wrapper {
@@ -101,6 +103,7 @@
   margin-top: 5vh;
   margin-bottom: 5vh;
   text-align: center;
+  font-family: var(--font-roboto-mono);
 }
 
 @media (max-width: 768px) {
@@ -121,10 +124,5 @@
     backface-visibility: hidden;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-  }
-}
-@media (max-width: 1200px) {
-  .aboutMe {
-    padding: 0;
   }
 }

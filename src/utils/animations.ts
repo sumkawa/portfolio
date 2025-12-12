@@ -1,11 +1,11 @@
 export const easings = {
-  easeOutQuart: [0.25, 1, 0.5, 1],
-  easeInOutQuint: [0.83, 0, 0.17, 1],
+  easeOutQuart: [0.25, 1, 0.5, 1] as const,
+  easeInOutQuint: [0.83, 0, 0.17, 1] as const,
 };
 
 export const textRevealMotion = (delay: number) => {
   return {
-    initial: { y: 100, opactiy: 0 },
+    initial: { y: 100, opacity: 0 },
     animate: {
       y: 0,
       opacity: 1,
@@ -36,7 +36,7 @@ export const arrowMotion = {
   hover: {
     rotate: -90,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       bounce: 0.5,
       duration: 0.5,
     },
@@ -46,6 +46,10 @@ export const arrowMotion = {
 export const itemContentMotion = {
   hover: {
     width: '5ch',
-    transition: { type: 'spring', bounce: 0.5, duration: 0.5 },
+    transition: { 
+      type: 'spring' as const, 
+      bounce: 0.5, 
+      duration: 0.5 
+    },
   },
 };

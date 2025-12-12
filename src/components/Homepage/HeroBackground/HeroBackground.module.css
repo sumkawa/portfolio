@@ -1,25 +1,48 @@
-/* Individual transforms for images */
+/* Background1 (sky) - static, no transform, lowest z-index */
 .background1 {
-  transform: translateZ(-10px) scale(2);
+  transform: translate3d(0, 0, -15px) scale(2.5);
+  -webkit-transform: translate3d(0, 0, -15px) scale(2.5);
+  z-index: 0; /* Behind everything */
 }
 
 .background2 {
-  transform: translateZ(-10px) scale(2);
+  transform: translate3d(0, 0, -10px) scale(2);
+  -webkit-transform: translate3d(0, 0, -10px) scale(2);
 }
 
 .background3 {
-  transform: translateZ(-5px) scale(1.5);
+  transform: translate3d(0, 0, -5px) scale(1.5);
+  -webkit-transform: translate3d(0, 0, -5px) scale(1.5);
 }
 
 .background4 {
-  transform: translateZ(-2px) scale(1.2);
+  transform: translate3d(0, 0, -2px) scale(1.2);
+  -webkit-transform: translate3d(0, 0, -2px) scale(1.2);
 }
 
 .foreground {
-  transform: translateZ(0px) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
 }
 
-/* Parallax Styling */
+/* Parallax Styling - proper z-index stacking */
+.background2 {
+  z-index: 1; /* Furthest mountains - above sky but below others */
+}
+
+.background3 {
+  z-index: 2; /* Middle layer */
+}
+
+.background4 {
+  z-index: 3; /* Closer layer */
+}
+
+.foreground {
+  z-index: 4; /* Closest layer */
+}
+
+/* Common styles */
 .background1,
 .background2,
 .background3,
@@ -27,9 +50,17 @@
 .foreground {
   object-fit: cover;
   position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100vw;
-  z-index: -1;
+  /* Safari performance optimizations */
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Ensure proper rendering */
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
 }
 
 @media (max-width: 768px) {
@@ -43,5 +74,26 @@
     height: 50vh;
     width: 100vw;
     z-index: -1;
+  }
+}
+
+/* Safari-specific optimizations - reduce transform complexity */
+@supports (-webkit-touch-callout: none) {
+  .background1,
+  .background2 {
+    /* Simplified transforms for Safari */
+    transform: translate3d(0, 0, -5px) scale(1.5);
+    -webkit-transform: translate3d(0, 0, -5px) scale(1.5);
+  }
+  
+  .background3,
+  .background4 {
+    transform: translate3d(0, 0, -2px) scale(1.2);
+    -webkit-transform: translate3d(0, 0, -2px) scale(1.2);
+  }
+  
+  .foreground {
+    transform: translate3d(0, 0, 0) scale(1);
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
   }
 }

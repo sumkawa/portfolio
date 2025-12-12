@@ -25,7 +25,7 @@ function HeroGrid() {
             <li>FE and ML SWE @ AuroraX Physics</li>
             <li>Team Canada Debate</li>
             <li>Researcher @ Alberta Precision Labs</li>
-            <li>Researcher @ Dr. Kaler's Lab, Alberta Health Services</li>
+            <li>Researcher @ Dr. Kaler&apos;s Lab, Alberta Health Services</li>
           </ul>
         </div>
       </div>

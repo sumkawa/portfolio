@@ -9,20 +9,20 @@ interface NavMenuToggleProps {
   setMenuOpen: (_: boolean) => void;
 }
 
+const path1Variants = {
+  open: { d: 'M3.06061 2.99999L21.0606 21' },
+  closed: { d: 'M0 8.5L24 8.5' },
+};
+
+const path2Variants = {
+  open: { d: 'M3.00006 21.0607L21 3.06064' },
+  closed: { d: 'M0 15.5L24 15.5' },
+};
+
 const NavMenuToggle: React.FC<NavMenuToggleProps> = ({
   menuOpen,
   setMenuOpen,
 }) => {
-  const path1Variants = {
-    open: { d: 'M3.06061 2.99999L21.0606 21' },
-    closed: { d: 'M0 8.5L24 8.5' },
-  };
-
-  const path2Variants = {
-    open: { d: 'M3.00006 21.0607L21 3.06064' },
-    closed: { d: 'M0 15.5L24 15.5' },
-  };
-
   const path1Controls = useAnimation();
   const path2Controls = useAnimation();
 
@@ -34,7 +34,7 @@ const NavMenuToggle: React.FC<NavMenuToggleProps> = ({
       path1Controls.start(path1Variants.closed);
       path2Controls.start(path2Variants.closed);
     }
-  }, [menuOpen]);
+  }, [menuOpen, path1Controls, path2Controls]);
 
   return (
     <button className={styles.parent} onClick={() => setMenuOpen(!menuOpen)}>

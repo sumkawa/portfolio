@@ -3,7 +3,6 @@ import React from 'react';
 import styles from './Navbar.module.css';
 import NavMenuToggle from '../NavMenuToggle/NavMenuToggle';
 import NavMenu from '../NavMenu/NavMenu';
-import BigScreenNav from '../BigScreenNav';
 import { AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';

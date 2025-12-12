@@ -17,7 +17,7 @@ export default function Home() {
       <section className={styles.homepageText}>
         <div className={styles.scrollPast}>
           <p className={styles.subText}>
-            Electrical engineer, DJ, and aspiring space cadet.
+            Systems CS & EE @ Stanford
           </p>
         </div>
         <div className={styles.aboutMe}>

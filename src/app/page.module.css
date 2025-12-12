@@ -34,10 +34,12 @@
   align-items: center;
 }
 .aboutMe {
-  padding: 0 100px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .wrapper {
@@ -45,7 +47,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   perspective: 10px;
+  -webkit-perspective: 10px;
   z-index: -1;
+  /* Safari scroll optimization */
+  -webkit-overflow-scrolling: touch;
 }
 
 .info {
@@ -64,12 +69,24 @@
   justify-content: flex-start;
   height: 100vh;
   transform-style: preserve-3d;
-  z-index: -1;
-  background-image: url(/hero_homepage/background_1.svg);
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+  -webkit-transform-style: preserve-3d;
+  z-index: 0;
+  /* Background1 (sky) is now an Image component, not CSS background */
   min-height: 100vh;
+  /* Safari performance optimizations */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Ensure background renders in Safari */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Disable background-attachment: fixed on Safari - major performance killer */
+/* But keep it for Chrome/other browsers */
+@supports not (-webkit-touch-callout: none) {
+  .main {
+    background-attachment: fixed;
+  }
 }
 
 .links {
@@ -86,6 +103,7 @@
   margin-top: 5vh;
   margin-bottom: 5vh;
   text-align: center;
+  font-family: var(--font-roboto-mono);
 }
 
 @media (max-width: 768px) {
@@ -97,16 +115,14 @@
     justify-content: flex-start;
     height: 50vh;
     transform-style: preserve-3d;
-    z-index: -1;
-    background-image: url(/hero_homepage/background_1.svg);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
+    -webkit-transform-style: preserve-3d;
+    z-index: 0;
+    /* Background1 (sky) is now an Image component */
     min-height: 50vh;
-  }
-}
-@media (max-width: 1200px) {
-  .aboutMe {
-    padding: 0;
+    /* Safari optimizations */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
 }

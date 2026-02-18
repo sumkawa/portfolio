@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown {
+  display: flex;
+  gap: clamp(0.75rem, 3vw, 2rem);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.timeUnit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(60px, 12vw, 100px);
+}
+
+.number {
+  font-family: var(--font-roboto-mono), monospace;
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #ffb6c1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.label {
+  font-family: var(--font-opensans), sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.8rem);
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+}
+
+.loading {
+  font-family: var(--font-opensans), sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1rem;
+}
+
+.celebration {
+  text-align: center;
+  padding: 3rem;
+}
+
+.celebrationEmoji {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.celebrationText {
+  font-family: var(--font-bitter), serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  background: linear-gradient(135deg, #ff6b9d 0%, #ffb6c1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.5rem 0;
+}
+
+.celebrationSubtext {
+  font-family: var(--font-opensans), sans-serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown {
+    gap: 0.5rem;
+  }
+
+  .timeUnit {
+    min-width: 55px;
+  }
+}

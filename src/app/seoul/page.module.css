@@ -87,8 +87,84 @@
   letter-spacing: 0.1em;
 }
 
+.letterSection {
+  margin-top: 2rem;
+}
+
+.letter {
+  background: linear-gradient(135deg, #fffef9 0%, #fdf8f0 100%);
+  border-radius: 4px;
+  padding: clamp(2rem, 5vw, 3rem);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 8px 40px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  transform: rotate(-0.5deg);
+}
+
+.letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 28px,
+    rgba(200, 180, 160, 0.2) 28px,
+    rgba(200, 180, 160, 0.2) 29px
+  );
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.letterGreeting {
+  font-family: var(--font-bitter), serif;
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  color: #4a4a4a;
+  margin: 0 0 1.5rem 0;
+  font-style: italic;
+}
+
+.letterBody {
+  font-family: var(--font-opensans), sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: #3a3a3a;
+  line-height: 1.9;
+}
+
+.letterBody p {
+  margin: 0 0 1.25rem 0;
+  text-indent: 2rem;
+}
+
+.letterBody p:last-child {
+  margin-bottom: 0;
+}
+
+.letterClosing {
+  font-family: var(--font-bitter), serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: #4a4a4a;
+  margin: 2rem 0 0 0;
+  text-align: right;
+  font-style: italic;
+}
+
+.signature {
+  font-family: var(--font-bitter), serif;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: #d4697a;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
 .collageSection {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 @keyframes fadeInDown {
@@ -114,6 +190,15 @@
   .frostedCard {
     padding: 2rem 1.5rem;
     border-radius: 16px;
+  }
+
+  .letter {
+    padding: 1.5rem;
+    transform: rotate(0);
+  }
+
+  .letterBody p {
+    text-indent: 1rem;
   }
 
   .collageSection {

@@ -1,0 +1,51 @@
+.main {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 1.5rem 8rem;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.title {
+  font-family: var(--font-bitter);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.35em;
+  text-transform: lowercase;
+}
+
+.rule {
+  width: 32px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Timeline container: vertical line on the left */
+.timeline {
+  width: 100%;
+  max-width: 560px;
+  position: relative;
+  padding-left: 0;
+}
+
+/* Continuous vertical line behind the dots */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px; /* center of the 24px dot column */
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}

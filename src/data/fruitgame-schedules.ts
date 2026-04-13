@@ -104,26 +104,24 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
   ],
   'Anthony Yang': [
     [
-      b('MATH53', '10:30AM', '11:30AM'),
-      b('COLLEGE119', '1:30PM', '2:50PM'),
-      b('CS229', '3:00PM', '4:20PM'),
+      b('MATH53', '11:30AM', '12:20PM', '420-041'),
+      b('COLLEGE119', '1:30PM', '2:50PM', '380-381U'),
+      b('CS229', '3:00PM', '4:20PM', 'NVIDIA Auditorium'),
     ],
     [
-      b('NEPR230', '10:30AM', '11:50AM'),
-      b('MATH51', '12:30PM', '1:20PM'),
-      b('CS153', '12:00PM', '1:20PM'),
+      b('NEPR230', '10:30AM', '11:50AM', 'LKSC 203/204'),
+      b('CS153', '12:00PM', '1:20PM', 'Hewlett Teaching Center'),
     ],
     [
-      b('MATH53', '10:30AM', '11:30AM'),
-      b('COLLEGE119', '1:30PM', '2:50PM'),
-      b('CS229', '3:00PM', '4:20PM'),
+      b('MATH53', '11:30AM', '12:20PM', '420-041'),
+      b('COLLEGE119', '1:30PM', '2:50PM', '380-381U'),
+      b('CS229', '3:00PM', '4:20PM', 'NVIDIA Auditorium'),
     ],
     [
-      b('NEPR230', '10:30AM', '11:50AM'),
-      b('MATH51', '12:30PM', '1:20PM'),
-      b('CS153', '12:00PM', '1:20PM'),
+      b('NEPR230', '10:30AM', '11:50AM', 'LKSC 203/204'),
+      b('CS153', '12:00PM', '1:20PM', 'Hewlett Teaching Center'),
     ],
-    [b('MATH53', '10:30AM', '11:30AM')],
+    [b('MATH53', '11:30AM', '12:20PM', '420-041')],
   ],
   'Cem Yedecki': [
     [
@@ -186,13 +184,12 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
   'Ishaan Gupta': [
     [
       b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSICS14N', '12:30PM', '1:20PM'),
       b('PHYSICS14N', '1:30PM', '2:50PM', '160-314'),
       b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
     ],
     [
       b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSWELL27', '5:30PM', '6:20PM'),
+      b('PHYSWELL27', '5:30PM', '6:20PM', 'West tennis courts'),
     ],
     [
       b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
@@ -201,41 +198,41 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
     ],
     [
       b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSWELL27', '5:30PM', '6:20PM'),
+      b('PHYSWELL27', '5:30PM', '6:20PM', 'West tennis courts'),
     ],
     [
       b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('MATSCI82N', '1:30PM', '3:20PM'),
+      b('MATSCI82N', '1:30PM', '3:20PM', 'GESB150'),
       b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
     ],
   ],
   'Josh Becker': [
     [
-      b('SPANLANG2', '10:30AM', '11:20AM'),
-      b('MATH21', '12:30PM', '1:20PM'),
-      b('ECON1', '1:30PM', '3:20PM'),
+      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
+      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
+      b('ECON1', '1:30PM', '3:20PM', 'Cemex'),
     ],
     [
       b('COLLEGE11', '9:30AM', '10:20AM'),
-      b('SPANLANG2', '10:30AM', '11:20AM'),
-      b('MATH21', '12:30PM', '1:20PM'),
+      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
+      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
       b('COLLEGE11', '2:00PM', '3:00PM'),
     ],
     [
-      b('SPANLANG2', '10:30AM', '11:20AM'),
-      b('MATH21', '12:30PM', '1:20PM'),
-      b('ECON1', '1:30PM', '3:20PM'),
-      b('MED279', '4:30PM', '5:30PM'),
+      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
+      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
+      b('ECON1', '1:30PM', '3:20PM', 'Cemex'),
+      b('MED279', '4:30PM', '5:30PM', 'LKSC 308'),
     ],
     [
       b('COLLEGE11', '9:30AM', '10:20AM'),
-      b('SPANLANG2', '10:30AM', '11:20AM'),
+      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
       b('COLLEGE11', '2:00PM', '3:00PM'),
     ],
     [
-      b('SPANLANG2', '10:30AM', '11:20AM'),
-      b('MATH21', '12:30PM', '1:20PM'),
-      b('ECON1', '1:30PM', '2:20PM'),
+      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
+      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
+      b('ECON1', '1:30PM', '2:20PM', 'Cemex'),
     ],
   ],
   'Neel Ahuja': [

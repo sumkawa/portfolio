@@ -5,10 +5,13 @@ import { useEffect, useMemo, useState } from 'react';
 import type { ClassBlock, WeekdayIndex } from '@/data/fruitgame-schedules';
 import {
   activeBlocksAt,
-  formatBlockLocationSuffix,
   formatMinutesAsClock,
   FRUITGAME_CLASS_DATA_BOOFED,
 } from '@/data/fruitgame-schedules';
+import {
+  isMandatoryAttendanceCourse,
+  MANDATORY_ATTENDANCE_SUMMARY,
+} from '@/lib/fruitgame/mandatoryAttendance';
 import FruitgameCalendarGrid from './FruitgameCalendarGrid';
 import styles from './FruitgameDashboard.module.css';
 
@@ -105,6 +108,16 @@ function dormLine(dorm: string, room: string): string {
   return `${dorm} ${room}`;
 }
 
+function mandatoryTag(course: string): string {
+  return isMandatoryAttendanceCourse(course) ? ' [mandatory]' : '';
+}
+
+/** Class building/room for the status column (always visible). */
+function formatClassLocationForStatus(bl: ClassBlock): string {
+  const loc = bl.location?.trim();
+  return ` · Location: ${loc && loc.length > 0 ? loc : '—'}`;
+}
+
 const BOOFED_STATUS =
   'Class data unavailable — boofed the schedule submission.';
 
@@ -130,7 +143,7 @@ function statusForPlayer(
   if (active.length > 0) {
     const bits = active.map(
       (bl) =>
-        `${bl.course} (until ${formatMinutesAsClock(bl.endMin)})${formatBlockLocationSuffix(bl)}`
+        `${bl.course} (until ${formatMinutesAsClock(bl.endMin)})${formatClassLocationForStatus(bl)}${mandatoryTag(bl.course)}`
     );
     return `In class: ${bits.join('; ')}`;
   }
@@ -140,7 +153,7 @@ function statusForPlayer(
   }
   const nextBits = next.map(
     (bl) =>
-      `${bl.course} ${formatMinutesAsClock(bl.startMin)}–${formatMinutesAsClock(bl.endMin)}${formatBlockLocationSuffix(bl)}`
+      `${bl.course} ${formatMinutesAsClock(bl.startMin)}–${formatMinutesAsClock(bl.endMin)}${formatClassLocationForStatus(bl)}${mandatoryTag(bl.course)}`
   );
   return `Not in a listed class. Next: ${nextBits.join('; ')}.`;
 }
@@ -229,6 +242,14 @@ export default function FruitgameDashboard({ players }: Props) {
             <li key={i}>{r}</li>
           ))}
         </ul>
+      </section>
+
+      <section className={styles.mandatoryNote} aria-label="Mandatory attendance classes">
+        <h2 className={styles.h2}>Required attendance (heuristic)</h2>
+        <p className={styles.mandatoryText}>
+          Blocks matching these patterns are labeled <strong>mandatory</strong> in
+          the table and week grid: {MANDATORY_ATTENDANCE_SUMMARY}
+        </p>
       </section>
 
       <FruitgameCalendarGrid players={players} />

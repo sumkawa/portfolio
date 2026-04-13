@@ -7,6 +7,7 @@ import {
   formatMinutesAsClock,
   FRUITGAME_CLASS_DATA_BOOFED,
 } from '@/data/fruitgame-schedules';
+import { isMandatoryAttendanceCourse } from '@/lib/fruitgame/mandatoryAttendance';
 import type { FruitgamePlayerPayload } from './FruitgameDashboard';
 import styles from './FruitgameCalendarGrid.module.css';
 
@@ -146,6 +147,8 @@ export default function FruitgameCalendarGrid({ players }: Props) {
       <p className={styles.hint}>
         One timeline for Mon–Fri. Check people to overlay their classes; each
         name keeps the same color. Overlaps split into columns automatically.
+        Blocks marked <span className={styles.reqInline}>REQ</span> are treated
+        as attendance-mandatory (COLLEGE*, *LANG*, ARTHIST*, PHYSWELL*).
       </p>
       <div className={styles.toolbar}>
         <button type="button" className={styles.toolBtn} onClick={selectAll}>
@@ -211,11 +214,12 @@ export default function FruitgameCalendarGrid({ players }: Props) {
                   const h = ((block.endMin - block.startMin) / span) * 100;
                   const w = 100 / maxLanes;
                   const left = lane * w;
-                  const title = `${displayName}: ${block.course} ${formatMinutesAsClock(block.startMin)}–${formatMinutesAsClock(block.endMin)}${formatBlockLocationSuffix(block)}`;
+                  const mandatory = isMandatoryAttendanceCourse(block.course);
+                  const title = `${displayName}: ${block.course} ${formatMinutesAsClock(block.startMin)}–${formatMinutesAsClock(block.endMin)}${formatBlockLocationSuffix(block)}${mandatory ? ' — attendance mandatory' : ''}`;
                   return (
                     <div
                       key={`${displayName}-${block.course}-${block.startMin}-${idx}`}
-                      className={styles.block}
+                      className={`${styles.block} ${mandatory ? styles.blockMandatory : ''}`}
                       style={{
                         top: `${top}%`,
                         height: `${h}%`,
@@ -226,6 +230,11 @@ export default function FruitgameCalendarGrid({ players }: Props) {
                       title={title}
                     >
                       <span className={styles.blockInner}>
+                        {mandatory && (
+                          <span className={styles.reqBadge} aria-hidden>
+                            REQ
+                          </span>
+                        )}
                         <span className={styles.blockCourse}>{block.course}</span>
                         <span className={styles.blockMeta}>
                           {displayName.split(' ')[0]}

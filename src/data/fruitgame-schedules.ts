@@ -19,7 +19,6 @@ export const FRUITGAME_POI_DISPLAY_NAMES: string[] = [
   'Theodore Kratter',
   'Anthony Yang',
   'Cem Yedecki',
-  'Siavash Hassibi',
   'Lion Paulson',
   'Ishaan Gupta',
   'Josh Becker',
@@ -138,21 +137,6 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
     ],
     [b('SYMSYS1', '1:30PM', '2:50PM', '320-105')],
     [b('CS106B', '1:30PM', '2:20PM', 'HEWLETT200')],
-  ],
-  'Siavash Hassibi': [
-    [
-      b('PWR2PT', '11:30AM', '1:20PM', '160-329'),
-      b('EE102B', '1:30PM', '2:50PM', 'SHRIRAM104'),
-      b('MATH104', '1:30PM', '2:20PM', '370-370'),
-    ],
-    [b('EE101B', '12:00PM', '1:20PM', 'CODAB60')],
-    [
-      b('PWR2PT', '11:30AM', '1:20PM', '160-329'),
-      b('EE102B', '1:30PM', '2:50PM', 'SHRIRAM104'),
-      b('MATH104', '1:30PM', '2:20PM', '370-370'),
-    ],
-    [b('EE101B', '12:00PM', '1:20PM', 'CODAB60')],
-    [b('MATH104', '1:30PM', '2:20PM', '370-370')],
   ],
   'Lion Paulson': [
     [

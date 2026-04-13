@@ -8,7 +8,9 @@ import HeroGrid from '@/components/Homepage/HeroGrid/HeroGrid';
 export default function Home() {
   return (
     <main className={styles.wrapper}>
-      <Navbar />
+      <div className={styles.homeNav}>
+        <Navbar />
+      </div>
       <div className={styles.main}>
         <HeroBackground />
         <Stars />

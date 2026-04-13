@@ -53,6 +53,13 @@
   -webkit-overflow-scrolling: touch;
 }
 
+/* Hide logo + nav menu on small viewports (homepage only). */
+@media (max-width: 768px) {
+  .homeNav {
+    display: none;
+  }
+}
+
 .info {
   padding: 20px;
 }

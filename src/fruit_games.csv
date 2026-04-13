@@ -1,0 +1,40 @@
+Name,Fruit,Dorm,Room,DormCluster,Complex,House,MapX%,MapY%,Strategy
+Aadi Chauhan,PEPINO MELON,Cardenal,315,Cardenal,Florence Moore (FloMo),Cardenal,89.05,37.2,Acquire PEPINO MELON → deliver to Cardenal 315.
+Adarsh Senthilnathan,,Robinson,315,Robinson,Governor's Corner,Robinson,15.01,30.76,"Acquire TBD fruit → deliver to Robinson 315. Batch with same-area targets: Dexter Cleveringa, Gabriel Benjamin Rosen-Ahmed."
+Alessandro De Leo,TOMATO,Arroyo,307,Arroyo,Wilbur Hall,Arroyo,16.92,34.22,"Acquire TOMATO → deliver to Arroyo 307. Batch with same-area targets: Davidi Aharon, Diego Sanchez, Forrest, Hayden Crocker, Josh Becker, Mael Ejiogu, Neel Ahuja, Wilson Adkins."
+Andrew Jenkins,PEAR,Branner,262,Branner,Branner Hall,Branner Hall,56.8,29.03,Acquire PEAR → deliver to Branner 262. Batch with same-area targets: Theodore Kratter.
+Anthony Yang,PLUM,Crothers c275,,Crothers,Crothers Hall,Crothers Hall,60.78,27.07,Acquire PLUM → deliver to Crothers c275. Batch with same-area targets: Chris Procaccino.
+Brody Tah,DRAGON FRUIT,Larkin,223,Larkin,Stern Hall,Larkin,59.17,28.0,Acquire DRAGON FRUIT → deliver to Larkin 223.
+Chris Procaccino,BIG ORANGE,Crothers,245B,Crothers,Crothers Hall,Crothers Hall,61.23,27.16,Acquire BIG ORANGE → deliver to Crothers 245B. Batch with same-area targets: Anthony Yang.
+Christian Huie,FIG,Donner,312,Donner,Stern Hall,Donner,55.11,30.94,Acquire FIG → deliver to Donner 312. Batch with same-area targets: Lion Paulson.
+Damien Crowley,PICKLE JAR,Soto,308,Soto,Wilbur Hall,Soto,76.81,41.15,Acquire PICKLE JAR → deliver to Soto 308. Batch with same-area targets: Kedar Cortes (Chicha).
+Daniel Banin,RASPBERRIES,Eucalipto 126 in west lag,,Eucalipto,Lagunita Court,West Lagunita (Eucalipto / Granada),23.2,33.13,Acquire RASPBERRIES → deliver to Eucalipto 126 in west lag.
+Davidi Aharon,STAR FRUIT,Arroyo,204,Arroyo,Wilbur Hall,Arroyo,16.89,33.95,"Acquire STAR FRUIT → deliver to Arroyo 204. Batch with same-area targets: Alessandro De Leo, Diego Sanchez, Forrest, Hayden Crocker, Josh Becker, Mael Ejiogu, Neel Ahuja, Wilson Adkins."
+Dexter Cleveringa,KIWI,Robinson,405,Robinson,Governor's Corner,Robinson,15.04,30.92,"Acquire KIWI → deliver to Robinson 405. Batch with same-area targets: Adarsh Senthilnathan, Gabriel Benjamin Rosen-Ahmed."
+Diego Sanchez,GRAPES,Arroyo,104,Arroyo,Wilbur Hall,Arroyo,17.24,34.17,"Acquire GRAPES → deliver to Arroyo 104. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Forrest, Hayden Crocker, Josh Becker, Mael Ejiogu, Neel Ahuja, Wilson Adkins."
+Erik Ask,YAM,Junipero (Wilbur) +,319,Junipero,Wilbur Hall,Junipero,66.21,33.01,Acquire YAM → deliver to Junipero (Wilbur) + 319.
+Forrest,GRAPEFRUIT,Arroyo,211,Arroyo,Wilbur Hall,Arroyo,17.14,33.93,"Acquire GRAPEFRUIT → deliver to Arroyo 211. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Diego Sanchez, Hayden Crocker, Josh Becker, Mael Ejiogu, Neel Ahuja, Wilson Adkins."
+Gabriel Benjamin Rosen-Ahmed, Horseradish,Robinson,103,Robinson,Governor's Corner,Robinson,14.88,31.24,"Acquire Horseradish fruit → deliver to Robinson 103. Batch with same-area targets: Adarsh Senthilnathan, Dexter Cleveringa."
+Haliot Debasai Ghermai,,Granada,212,Granada,Lagunita Court,West Lagunita (Eucalipto / Granada),20.25,35.92,"Acquire TBD fruit → deliver to Granada 212. Batch with same-area targets: Ishaan Gupta, Lucas Farrell-Straight, Will Kaegi."
+Hayden Crocker,PINEAPPLE,Arroyo,310,Arroyo,Wilbur Hall,Arroyo,17.01,34.01,"Acquire PINEAPPLE → deliver to Arroyo 310. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Diego Sanchez, Forrest, Josh Becker, Mael Ejiogu, Neel Ahuja, Wilson Adkins."
+Ian Chung,PLANTAIN,Rinconada,217,Rinconada,Wilbur Hall,Rinconada,22.17,30.27,"Acquire PLANTAIN → deliver to Rinconada 217. Batch with same-area targets: Joe Mansour, Ollie Garfinkel, Oscar Serna."
+Ishaan Gupta,APPLE,Granada,220,Granada,Lagunita Court,West Lagunita (Eucalipto / Granada),20.1,35.73,"Acquire APPLE → deliver to Granada 220. Batch with same-area targets: Haliot Debasai Ghermai, Lucas Farrell-Straight, Will Kaegi."
+Joe Mansour,PAPAYA,Rinconada,210,Rinconada,Wilbur Hall,Rinconada,22.27,29.99,"Acquire PAPAYA → deliver to Rinconada 210. Batch with same-area targets: Ian Chung, Ollie Garfinkel, Oscar Serna."
+Jonathan Gonzalez Segura,LEMON,Otero,314,Otero,Wilbur Hall,Otero,57.17,50.93,Acquire LEMON → deliver to Otero 314.
+Josh Becker,GINGER,Arroyo,208,Arroyo,Wilbur Hall,Arroyo,17.13,34.09,"Acquire GINGER → deliver to Arroyo 208. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Diego Sanchez, Forrest, Hayden Crocker, Mael Ejiogu, Neel Ahuja, Wilson Adkins."
+Kedar Cortes (Chicha),STRAWBERRIES,Soto,219,Soto,Wilbur Hall,Soto,77.22,41.18,Acquire STRAWBERRIES → deliver to Soto 219. Batch with same-area targets: Damien Crowley.
+Kriyoshig Prasai,,Ujamaa Upper B,257,Ujamaa,Lagunita Court,Ujamaa,74.75,47.0,Acquire TBD fruit → deliver to Ujamaa Upper B 257. Batch with same-area targets: Nathaniel Esubonteng.
+Lion Paulson,ORANGE SPIKEY,Donner,312,Donner,Stern Hall,Donner,54.89,31.0,Acquire ORANGE SPIKEY → deliver to Donner 312. Batch with same-area targets: Christian Huie.
+Lucas Farrell-Straight,GREEN SQUASH,Granada,225,Granada,Lagunita Court,West Lagunita (Eucalipto / Granada),19.87,36.18,"Acquire GREEN SQUASH → deliver to Granada 225. Batch with same-area targets: Haliot Debasai Ghermai, Ishaan Gupta, Will Kaegi."
+Luke Morrison,GREEN PUMPKIN,Schiff,222,Schiff,Governor's Corner,Schiff,51.21,49.27,Acquire GREEN PUMPKIN → deliver to Schiff 222.
+Mael Ejiogu,BLUEBERRIES,Arroyo,322,Arroyo,Wilbur Hall,Arroyo,17.19,33.92,"Acquire BLUEBERRIES → deliver to Arroyo 322. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Diego Sanchez, Forrest, Hayden Crocker, Josh Becker, Neel Ahuja, Wilson Adkins."
+Mehmet Cem Yedekci,COCONUT,Flomo Mirlo,305,FloMo,Florence Moore (FloMo),Mirlo,43.8,55.86,Acquire COCONUT → deliver to Flomo Mirlo 305.
+Nathaniel Esubonteng,AVOCADO,Ujamaa,117A,Ujamaa,Lagunita Court,Ujamaa,74.88,47.1,Acquire AVOCADO → deliver to Ujamaa 117A. Batch with same-area targets: Kriyoshig Prasai.
+Neel Ahuja,BLUEBERRIES,Arroyo,107,Arroyo,Wilbur Hall,Arroyo,16.92,34.1,"Acquire BLUEBERRIES → deliver to Arroyo 107. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Diego Sanchez, Forrest, Hayden Crocker, Josh Becker, Mael Ejiogu, Wilson Adkins."
+Nico Padilla,PASSION FRUIT,Zapata,312,Zapata,Stern Hall,Casa Zapata,72.87,39.02,Acquire PASSION FRUIT → deliver to Zapata 312.
+Ollie Garfinkel,APPLE,Rinconada,111,Rinconada,Wilbur Hall,Rinconada,22.26,29.97,"Acquire APPLE → deliver to Rinconada 111. Batch with same-area targets: Ian Chung, Joe Mansour, Oscar Serna."
+Oscar Serna,BLACK BERRIES,Rinc,210,Rinconada,Wilbur Hall,Rinconada,22.09,29.73,"Acquire BLACK BERRIES → deliver to Rinc 210. Batch with same-area targets: Ian Chung, Joe Mansour, Ollie Garfinkel."
+Siavash Hassibi,CANTALOUPE,Roble,344,Roble,Roble Hall,Roble Hall,14.11,37.07,Acquire CANTALOUPE → deliver to Roble 344.
+Theodore Kratter,EGGPLANT,Branner,127,Branner,Branner Hall,Branner Hall,56.96,29.15,Acquire EGGPLANT → deliver to Branner 127. Batch with same-area targets: Andrew Jenkins.
+Will Kaegi,SUMO CITRIS,Granada G210,,Granada,Lagunita Court,West Lagunita (Eucalipto / Granada),20.06,36.19,"Acquire SUMO CITRIS → deliver to Granada G210. Batch with same-area targets: Haliot Debasai Ghermai, Ishaan Gupta, Lucas Farrell-Straight."
+Wilson Adkins,SQUASH,Arroyo,207,Arroyo,Wilbur Hall,Arroyo,17.04,33.78,"Acquire SQUASH → deliver to Arroyo 207. Batch with same-area targets: Alessandro De Leo, Davidi Aharon, Diego Sanchez, Forrest, Hayden Crocker, Josh Becker, Mael Ejiogu, Neel Ahuja."

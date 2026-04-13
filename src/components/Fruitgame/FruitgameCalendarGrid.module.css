@@ -1,0 +1,222 @@
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.h2 {
+  font-family: var(--font-opensans), system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg-muted, #7a8fa8);
+  margin-bottom: 0.65rem;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--fg-muted, #7a8fa8);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  max-width: 42rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.toolBtn {
+  font-family: var(--font-roboto-mono), ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  background: rgba(30, 58, 95, 0.35);
+  border: 1px solid rgba(45, 85, 130, 0.55);
+  color: #9eb6d4;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.toolBtn:hover {
+  background: rgba(40, 75, 115, 0.45);
+  color: #c5d8f0;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 0.85rem;
+  background: rgba(10, 15, 24, 0.65);
+  border: 1px solid rgba(28, 45, 69, 0.9);
+  border-radius: 2px;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #a8b8ce;
+  cursor: pointer;
+  user-select: none;
+}
+
+.legendItem input {
+  accent-color: #4a7ab8;
+}
+
+.swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 1px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.legendName {
+  white-space: nowrap;
+}
+
+.boofedTag {
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7f99;
+  font-style: italic;
+}
+
+.gridWrap {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  border: 1px solid rgba(28, 45, 69, 0.95);
+  border-radius: 2px;
+  background: #050810;
+}
+
+.timeRuler {
+  flex-shrink: 0;
+  width: 3.25rem;
+  position: relative;
+  border-right: 1px solid rgba(28, 45, 69, 0.85);
+  background: #060a12;
+}
+
+.timeTick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  font-family: var(--font-roboto-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  color: #5c6d84;
+  text-align: right;
+  padding-right: 0.35rem;
+  white-space: nowrap;
+}
+
+.dayColumns {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.dayCol {
+  flex: 1;
+  min-width: 5.5rem;
+  border-right: 1px solid rgba(28, 45, 69, 0.5);
+}
+
+.dayCol:last-child {
+  border-right: none;
+}
+
+.dayHead {
+  font-family: var(--font-opensans), system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.5rem 0.25rem;
+  color: #8b9cb3;
+  border-bottom: 1px solid rgba(45, 85, 130, 0.45);
+  background: rgba(8, 14, 24, 0.95);
+}
+
+.dayBody {
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(45, 85, 130, 0.12) 1px,
+    transparent 1px
+  );
+  background-repeat: repeat-y;
+}
+
+.block {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 1px;
+  min-height: 4px;
+  overflow: hidden;
+  border-radius: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.blockInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  padding: 0.15rem 0.2rem;
+  line-height: 1.15;
+  height: 100%;
+  overflow: hidden;
+}
+
+.blockCourse {
+  font-family: var(--font-roboto-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blockMeta {
+  font-size: 0.52rem;
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emptyNote {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #6b7f99;
+  font-style: italic;
+}
+
+@media (max-width: 720px) {
+  .dayCol {
+    min-width: 4.75rem;
+  }
+
+  .blockCourse {
+    font-size: 0.52rem;
+  }
+
+  .blockMeta {
+    display: none;
+  }
+}

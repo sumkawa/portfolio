@@ -16,10 +16,7 @@ export type ClassBlock = {
 /** Display order for dashboard rows. */
 export const FRUITGAME_POI_DISPLAY_NAMES: string[] = [
   'Theodore Kratter',
-  'Anthony Yang',
-  'Cem Yedecki',
   'Lion Paulson',
-  'Josh Becker',
   'Wilson Adkins',
   'Ollie Garfinkel',
 ];
@@ -76,43 +73,6 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
     [],
     [b('MATSCI82N', '1:30PM', '3:20PM', 'GESB150')],
   ],
-  'Anthony Yang': [
-    [
-      b('MATH53', '11:30AM', '12:20PM', '420-041'),
-      b('COLLEGE119', '1:30PM', '2:50PM', '380-381U'),
-      b('CS229', '3:00PM', '4:20PM', 'NVIDIA Auditorium'),
-    ],
-    [
-      b('NEPR230', '10:30AM', '11:50AM', 'LKSC 203/204'),
-      b('CS153', '12:00PM', '1:20PM', 'Hewlett Teaching Center'),
-    ],
-    [
-      b('MATH53', '11:30AM', '12:20PM', '420-041'),
-      b('COLLEGE119', '1:30PM', '2:50PM', '380-381U'),
-      b('CS229', '3:00PM', '4:20PM', 'NVIDIA Auditorium'),
-    ],
-    [
-      b('NEPR230', '10:30AM', '11:50AM', 'LKSC 203/204'),
-      b('CS153', '12:00PM', '1:20PM', 'Hewlett Teaching Center'),
-    ],
-    [b('MATH53', '11:30AM', '12:20PM', '420-041')],
-  ],
-  'Cem Yedecki': [
-    [
-      b('COLLEGE117', '11:30AM', '12:20PM', '380-380X'),
-      b('CS106B', '1:30PM', '2:20PM', 'HEWLETT200'),
-      b('COLLEGE117-DIS', '2:30PM', '3:20PM', 'THORNT210'),
-    ],
-    [b('SYMSYS1', '1:30PM', '2:50PM', '320-105')],
-    [
-      b('SYMSYS1-DIS', '10:30AM', '11:20AM', 'LATHROP292'),
-      b('COLLEGE117', '11:30AM', '12:20PM', '380-380X'),
-      b('CS106B', '1:30PM', '2:20PM', 'HEWLETT200'),
-      b('COLLEGE117-DIS', '2:30PM', '3:20PM', 'THORNT210'),
-    ],
-    [b('SYMSYS1', '1:30PM', '2:50PM', '320-105')],
-    [b('CS106B', '1:30PM', '2:20PM', 'HEWLETT200')],
-  ],
   'Lion Paulson': [
     [
       b('PWR1MA', '9:30AM', '11:20AM', '160-332'),
@@ -138,35 +98,6 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
     [
       b('MATH20', '10:30AM', '11:20AM', '380-380C'),
       b('CHINLANG2', '11:30AM', '12:20PM', 'LATHROP197'),
-    ],
-  ],
-  'Josh Becker': [
-    [
-      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
-      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
-      b('ECON1', '1:30PM', '3:20PM', 'Cemex'),
-    ],
-    [
-      b('COLLEGE11', '9:30AM', '10:20AM'),
-      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
-      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
-      b('COLLEGE11', '2:00PM', '3:00PM'),
-    ],
-    [
-      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
-      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
-      b('ECON1', '1:30PM', '3:20PM', 'Cemex'),
-      b('MED279', '4:30PM', '5:30PM', 'LKSC 308'),
-    ],
-    [
-      b('COLLEGE11', '9:30AM', '10:20AM'),
-      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
-      b('COLLEGE11', '2:00PM', '3:00PM'),
-    ],
-    [
-      b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
-      b('MATH21', '12:30PM', '1:20PM', '380-380C'),
-      b('ECON1', '1:30PM', '2:20PM', 'Cemex'),
     ],
   ],
   'Wilson Adkins': [[], [], [], [], []],

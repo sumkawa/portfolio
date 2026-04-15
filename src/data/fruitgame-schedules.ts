@@ -15,25 +15,19 @@ export type ClassBlock = {
 
 /** Display order for dashboard rows. */
 export const FRUITGAME_POI_DISPLAY_NAMES: string[] = [
-  'Andrew Jenkins',
   'Theodore Kratter',
   'Anthony Yang',
   'Cem Yedecki',
   'Lion Paulson',
-  'Ishaan Gupta',
   'Josh Becker',
-  'Neel Ahuja',
   'Wilson Adkins',
-  'Forrest',
   'Ollie Garfinkel',
-  'Damien Crowley',
 ];
 
 /** POI with no class schedule on file (dashboard shows a fixed status). */
 export const FRUITGAME_CLASS_DATA_BOOFED: ReadonlySet<string> = new Set([
   'Wilson Adkins',
   'Ollie Garfinkel',
-  'Damien Crowley',
 ]);
 
 /** Parse times like 10:00AM, 1:20PM, 12:30PM → minutes from midnight. */
@@ -72,25 +66,6 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
   string,
   ClassBlock[][]
 > = {
-  'Andrew Jenkins': [
-    [
-      b('MATH51', '10:30AM', '11:30AM'),
-      b('CS109', '1:30PM', '2:50PM'),
-      b('ARTHIST238C', '3:00PM', '4:20PM'),
-    ],
-    [],
-    [
-      b('MATH51', '10:30AM', '11:30AM'),
-      b('CS109', '1:30PM', '2:50PM'),
-      b('ARTHIST238C', '3:00PM', '4:20PM'),
-      b('ENGR193', '4:30PM', '5:20PM'),
-    ],
-    [],
-    [
-      b('MATH51', '10:30AM', '11:30AM'),
-      b('CS109', '1:30PM', '2:50PM'),
-    ],
-  ],
   'Theodore Kratter': [
     [b('HISTORY40', '9:00AM', '10:20AM', '200-303')],
     [],
@@ -165,31 +140,6 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
       b('CHINLANG2', '11:30AM', '12:20PM', 'LATHROP197'),
     ],
   ],
-  'Ishaan Gupta': [
-    [
-      b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSICS14N', '1:30PM', '2:50PM', '160-314'),
-      b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
-    ],
-    [
-      b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSWELL27', '5:30PM', '6:20PM', 'West tennis courts'),
-    ],
-    [
-      b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSICS14N', '1:30PM', '2:50PM', '160-314'),
-      b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
-    ],
-    [
-      b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('PHYSWELL27', '5:30PM', '6:20PM', 'West tennis courts'),
-    ],
-    [
-      b('SPANLANG1A', '11:30AM', '12:20PM', '260-244'),
-      b('MATSCI82N', '1:30PM', '3:20PM', 'GESB150'),
-      b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
-    ],
-  ],
   'Josh Becker': [
     [
       b('SPANLANG2', '10:30AM', '11:20AM', 'LATHROP191'),
@@ -219,52 +169,8 @@ export const FRUITGAME_SCHEDULES_BY_DISPLAY_NAME: Record<
       b('ECON1', '1:30PM', '2:20PM', 'Cemex'),
     ],
   ],
-  'Neel Ahuja': [
-    [
-      b('MATH53', '11:30AM', '12:20PM', '420-041'),
-      b('COLLEGE119', '1:30PM', '2:50PM', '160-B35'),
-      b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
-    ],
-    [
-      b('MATH53-DIS', '9:30AM', '10:20AM', '200-305'),
-      b('CS153', '12:00PM', '1:20PM', 'HEWLETT200'),
-    ],
-    [
-      b('MATH53', '11:30AM', '12:20PM', '420-041'),
-      b('COLLEGE119', '1:30PM', '2:50PM', '160-B35'),
-      b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
-    ],
-    [
-      b('MATH53-DIS', '9:30AM', '10:20AM', '200-305'),
-      b('CS153', '12:00PM', '1:20PM', 'HEWLETT200'),
-    ],
-    [
-      b('MATH53', '11:30AM', '12:20PM', '420-041'),
-      b('CS103', '3:00PM', '4:20PM', 'CODAB80'),
-    ],
-  ],
   'Wilson Adkins': [[], [], [], [], []],
-  Forrest: [
-    [
-      b('SPANLANG3', '11:30AM', '12:20PM', '200-015'),
-      b('COLLEGE119', '3:00PM', '4:20PM', '160-B35'),
-    ],
-    [
-      b('SPANLANG3', '11:30AM', '12:20PM', '200-015'),
-      b('PHIL2', '3:00PM', '4:20PM', '370-370'),
-    ],
-    [
-      b('SPANLANG3', '11:30AM', '12:20PM', '200-015'),
-      b('COLLEGE119', '3:00PM', '4:20PM', '160-B35'),
-    ],
-    [
-      b('SPANLANG3', '11:30AM', '12:20PM', '200-015'),
-      b('PHIL2', '3:00PM', '4:20PM', '370-370'),
-    ],
-    [b('SPANLANG3', '11:30AM', '12:20PM', '200-015')],
-  ],
   'Ollie Garfinkel': [[], [], [], [], []],
-  'Damien Crowley': [[], [], [], [], []],
 };
 
 /**
